@@ -1,0 +1,2281 @@
+﻿/* ============================================================
+   GAURANG DARJI PORTFOLIO
+   ABOUT ME PAGE
+   PART 1 OF 4
+
+   Foundation, page shell and hero
+============================================================ */
+
+
+/* ============================================================
+   DESIGN TOKENS
+============================================================ */
+
+:root {
+    --page-background: #d8d8d5;
+
+    --hero-background: #3d3d3d;
+    --hero-background-deep: #353535;
+
+    --navigation-background: #22282c;
+    --navigation-background-light: #293035;
+
+    --content-background: #efeeeb;
+    --content-background-secondary: #e9e8e4;
+
+    --white: #ffffff;
+    --soft-white: #f3f3f1;
+
+    --text-dark: #181818;
+    --text-medium: #6f706f;
+    --text-muted: #999894;
+
+    --accent: #f3aa2c;
+    --accent-hover: #ffc04a;
+
+    --site-max-width: 1552px;
+    --content-width: 1180px;
+
+    --display-font:
+        "Barlow Condensed",
+        "Arial Narrow",
+        Impact,
+        sans-serif;
+
+    --body-font:
+        "Libre Franklin",
+        Helvetica,
+        Arial,
+        sans-serif;
+}
+
+
+/* ============================================================
+   RESET
+============================================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    min-width: 320px;
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-width: 320px;
+    min-height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    background: var(--page-background);
+    color: var(--text-dark);
+    font-family: var(--body-font);
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body.navigation-open {
+    overflow: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+
+/* ============================================================
+   ABOUT PAGE SHELL
+============================================================ */
+
+.about-page {
+    width: min(100%, var(--site-max-width));
+    min-height: 100vh;
+    margin: 0 auto;
+    overflow: hidden;
+    background: var(--content-background);
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.08),
+        0 0 2px rgba(0, 0, 0, 0.18);
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 296px;
+    min-height: 296px;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            90deg,
+            var(--hero-background) 0%,
+            var(--hero-background) 58%,
+            var(--hero-background-deep) 100%
+        );
+}
+
+
+/* ============================================================
+   HERO TEXTURE
+============================================================ */
+
+.hero__texture {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.75;
+    background:
+        radial-gradient(
+            circle at 4px 4px,
+            rgba(210, 210, 207, 0.62) 0 1.5px,
+            transparent 1.7px
+        )
+        0 0 / 11px 11px,
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(205, 205, 201, 0.42) 0,
+            rgba(205, 205, 201, 0.16) 26%,
+            transparent 58%
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(166, 168, 164, 0.72) 0,
+            rgba(116, 117, 114, 0.42) 10%,
+            rgba(61, 61, 61, 0.1) 30%,
+            transparent 48%
+        );
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            #000 0,
+            #000 18%,
+            rgba(0, 0, 0, 0.4) 36%,
+            transparent 58%
+        );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            #000 0,
+            #000 18%,
+            rgba(0, 0, 0, 0.4) 36%,
+            transparent 58%
+        );
+}
+
+.hero__texture::before,
+.hero__texture::after {
+    position: absolute;
+    content: "";
+    pointer-events: none;
+}
+
+.hero__texture::before {
+    top: 0;
+    left: -4%;
+    width: 108%;
+    height: 130px;
+    opacity: 0.55;
+    background:
+        repeating-radial-gradient(
+            circle at 50% -50%,
+            rgba(233, 233, 230, 0.68) 0 2px,
+            transparent 2px 9px
+        );
+    transform: scaleY(0.65);
+    transform-origin: top;
+}
+
+.hero__texture::after {
+    top: 4px;
+    right: 2%;
+    width: 35%;
+    height: 118px;
+    opacity: 0.5;
+    background:
+        radial-gradient(
+            circle,
+            rgba(227, 227, 224, 0.7) 0 3px,
+            transparent 3.5px
+        )
+        0 0 / 18px 18px;
+    transform: skewX(-12deg);
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            #000,
+            rgba(0, 0, 0, 0.65) 50%,
+            transparent
+        );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            #000,
+            rgba(0, 0, 0, 0.65) 50%,
+            transparent
+        );
+}
+
+
+/* ============================================================
+   HERO CONTENT
+============================================================ */
+
+.hero__content {
+    position: relative;
+    z-index: 2;
+    width: min(var(--content-width), calc(100% - 64px));
+    height: 100%;
+    margin: 0 auto;
+}
+
+
+/* ============================================================
+   HERO IDENTITY
+============================================================ */
+
+.hero__identity {
+    position: absolute;
+    z-index: 3;
+    bottom: 23px;
+    left: 0;
+}
+
+.hero__name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+    font-family: var(--display-font);
+    font-weight: 600;
+    line-height: 0.75;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+}
+
+.hero__first-name {
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin: 0;
+    color: var(--white);
+    font-size: clamp(58px, 5vw, 68px);
+    font-weight: 600;
+    line-height: 0.82;
+}
+
+.hero__last-name {
+    display: block;
+    margin: 0;
+    color: var(--accent);
+    font-size: clamp(78px, 6.7vw, 90px);
+    font-weight: 500;
+    line-height: 0.76;
+}
+
+.hero__role {
+    margin: 11px 0 0 2px;
+    color: var(--soft-white);
+    font-family: var(--body-font);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.1px;
+}
+
+
+/* ============================================================
+   HERO PORTRAIT
+============================================================ */
+
+.hero__portrait-wrapper {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 292px;
+    height: 290px;
+    isolation: isolate;
+}
+
+.hero__portrait-wrapper::before {
+    position: absolute;
+    z-index: -1;
+    right: 4%;
+    bottom: 0;
+    width: 88%;
+    height: 88%;
+    content: "";
+    pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(255, 255, 255, 0.09) 0%,
+            rgba(255, 255, 255, 0.035) 48%,
+            transparent 72%
+        );
+}
+
+.hero__portrait {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    opacity: 1;
+    filter:
+        grayscale(0.28)
+        contrast(1.08)
+        brightness(1.08)
+        saturate(0.82);
+}
+
+
+/* ============================================================
+   DESKTOP ONE-SCREEN FRAME
+============================================================ */
+
+@media (min-width: 761px) {
+    html,
+    body {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .about-page {
+        display: grid;
+        height: 100vh;
+        min-height: 0;
+        grid-template-rows:
+            296px
+            53px
+            minmax(0, 1fr);
+    }
+}
+
+
+/* ============================================================
+   SHORT LAPTOP SCREENS
+============================================================ */
+
+@media (min-width: 761px) and (max-height: 760px) {
+    .about-page {
+        grid-template-rows:
+            250px
+            48px
+            minmax(0, 1fr);
+    }
+
+    .hero {
+        height: 250px;
+        min-height: 250px;
+    }
+
+    .hero__identity {
+        bottom: 19px;
+    }
+
+    .hero__first-name {
+        font-size: 57px;
+    }
+
+    .hero__last-name {
+        font-size: 75px;
+    }
+
+    .hero__role {
+        margin-top: 8px;
+        font-size: 14px;
+    }
+
+    .hero__portrait-wrapper {
+        width: 250px;
+        height: 246px;
+    }
+}
+
+
+/* ============================================================
+   TABLET HERO
+============================================================ */
+
+@media (max-width: 980px) and (min-width: 761px) {
+    .hero__content {
+        width: calc(100% - 48px);
+    }
+
+    .hero__first-name {
+        font-size: 56px;
+    }
+
+    .hero__last-name {
+        font-size: 74px;
+    }
+
+    .hero__role {
+        font-size: 14px;
+    }
+
+    .hero__portrait-wrapper {
+        width: 265px;
+        height: 286px;
+    }
+}
+
+
+/* ============================================================
+   MOBILE HERO
+============================================================ */
+
+@media (max-width: 760px) {
+    html,
+    body {
+        height: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .about-page {
+        display: block;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .hero {
+        height: 500px;
+        min-height: 500px;
+    }
+
+    .hero__content {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero__identity {
+        top: 34px;
+        right: 20px;
+        bottom: auto;
+        left: 20px;
+        text-align: center;
+    }
+
+    .hero__name {
+        align-items: center;
+        line-height: 0.8;
+        letter-spacing: -2px;
+    }
+
+    .hero__first-name {
+        font-size: 49px;
+    }
+
+    .hero__last-name {
+        font-size: 72px;
+    }
+
+    .hero__role {
+        margin: 16px 0 0;
+        font-size: 17px;
+        text-align: center;
+    }
+
+    .hero__portrait-wrapper {
+        right: 50%;
+        bottom: 0;
+        width: 390px;
+        height: 360px;
+        transform: translateX(50%);
+    }
+}
+
+
+/* ============================================================
+   SMALL MOBILE HERO
+============================================================ */
+
+@media (max-width: 480px) {
+    .hero {
+        height: 445px;
+        min-height: 445px;
+    }
+
+    .hero__identity {
+        top: 28px;
+    }
+
+    .hero__first-name {
+        font-size: 42px;
+    }
+
+    .hero__last-name {
+        font-size: 62px;
+    }
+
+    .hero__role {
+        margin-top: 12px;
+        font-size: 15px;
+    }
+
+    .hero__portrait-wrapper {
+        width: 330px;
+        height: 315px;
+    }
+}
+
+/* ============================================================
+   GAURANG DARJI PORTFOLIO
+   ABOUT ME PAGE
+   PART 2 OF 4
+
+   Navigation and About Me content section
+============================================================ */
+
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+
+.main-navigation {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 53px;
+    min-height: 53px;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            90deg,
+            var(--navigation-background) 0%,
+            var(--navigation-background-light) 50%,
+            var(--navigation-background) 100%
+        );
+}
+
+.main-navigation::before,
+.main-navigation::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+}
+
+.main-navigation::before {
+    opacity: 0.16;
+    background:
+        radial-gradient(
+            circle at 3px 3px,
+            rgba(255, 255, 255, 0.25) 0 1px,
+            transparent 1.2px
+        )
+        0 0 / 8px 8px;
+}
+
+.main-navigation::after {
+    opacity: 0.18;
+    background:
+        linear-gradient(
+            115deg,
+            transparent 0 34%,
+            rgba(255, 255, 255, 0.08) 34.2% 34.5%,
+            transparent 34.7% 66%,
+            rgba(255, 255, 255, 0.06) 66.2% 66.5%,
+            transparent 66.7%
+        );
+}
+
+.main-navigation__inner {
+    position: relative;
+    z-index: 2;
+    width: min(1100px, calc(100% - 48px));
+    height: 53px;
+    min-height: 53px;
+    margin: 0 auto;
+}
+
+.main-navigation__list {
+    display: flex;
+    width: 100%;
+    height: 53px;
+    min-height: 53px;
+    align-items: center;
+    justify-content: center;
+    gap: 27px;
+    margin: 0;
+    padding: 0 16px;
+    list-style: none;
+}
+
+.main-navigation__list li {
+    display: block;
+    height: 53px;
+    min-height: 53px;
+}
+
+.main-navigation__list a {
+    position: relative;
+    display: inline-flex;
+    height: 53px;
+    min-height: 53px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: var(--accent);
+    font-family: var(--display-font);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+        color 160ms ease,
+        transform 160ms ease;
+}
+
+.main-navigation__list a::after {
+    position: absolute;
+    right: 0;
+    bottom: 8px;
+    left: 0;
+    height: 2px;
+    content: "";
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 160ms ease;
+}
+
+.main-navigation__list a:hover,
+.main-navigation__list a:focus-visible,
+.main-navigation__list a.is-active {
+    color: var(--accent-hover);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+.main-navigation__list a:hover::after,
+.main-navigation__list a:focus-visible::after,
+.main-navigation__list a.is-active::after {
+    transform: scaleX(1);
+}
+
+.mobile-navigation-button {
+    display: none;
+}
+
+
+/* ============================================================
+   MAIN CONTENT
+============================================================ */
+
+.about-page__main {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            180deg,
+            var(--content-background) 0%,
+            var(--content-background-secondary) 100%
+        );
+}
+
+
+/* ============================================================
+   ABOUT SECTION
+============================================================ */
+
+.about-single-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.about-single-screen__texture {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    background:
+        radial-gradient(
+            circle at 5px 5px,
+            rgba(90, 90, 90, 0.15) 0 1px,
+            transparent 1.2px
+        )
+        0 0 / 10px 10px;
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            #000 0%,
+            rgba(0, 0, 0, 0.65) 65%,
+            transparent 100%
+        );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            #000 0%,
+            rgba(0, 0, 0, 0.65) 65%,
+            transparent 100%
+        );
+}
+
+.about-single-screen__inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    width: min(1120px, calc(100% - 64px));
+    height: 100%;
+    min-height: 0;
+    grid-template-rows:
+        auto
+        minmax(0, 1fr);
+    margin: 0 auto;
+    padding: 7px 0 12px;
+    overflow: hidden;
+}
+
+
+/* ============================================================
+   ABOUT HEADING
+============================================================ */
+
+.about-single-screen__heading {
+    margin: 0 0 7px;
+    color: #111111;
+    font-family: var(--display-font);
+    font-size: 31px;
+    font-weight: 800;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.about-single-screen__heading::after {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin-top: 6px;
+    content: "";
+    background: rgba(0, 0, 0, 0.12);
+}
+
+
+/* ============================================================
+   ABOUT CONTENT GRID
+============================================================ */
+
+.about-single-screen__content {
+    display: grid;
+    width: 100%;
+    min-height: 0;
+    grid-template-columns:
+        250px
+        minmax(0, 1fr);
+    gap: 44px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+/* ============================================================
+   IMAGE PLACEHOLDER
+============================================================ */
+
+.about-single-screen__image {
+    display: block;
+    width: 250px;
+    height: min(100%, 270px);
+    min-height: 220px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background:
+        linear-gradient(
+            145deg,
+            #d4d2cd,
+            #ebe9e4
+        );
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.about-single-screen__image span {
+    color: #777777;
+    font-family: var(--display-font);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+
+/* ============================================================
+   ABOUT COPY
+============================================================ */
+
+.about-single-screen__copy {
+    min-width: 0;
+    max-width: 790px;
+}
+
+.about-single-screen__copy p {
+    margin: 0;
+    color: #222222;
+    font-family: var(--body-font);
+    font-size: clamp(17.25px, 1.36vw, 20.7px);
+    font-weight: 400;
+    line-height: 1.68;
+}
+
+
+/* ============================================================
+   SHORT LAPTOP SCREENS
+============================================================ */
+
+@media (min-width: 761px) and (max-height: 760px) {
+    .main-navigation,
+    .main-navigation__inner,
+    .main-navigation__list,
+    .main-navigation__list li,
+    .main-navigation__list a {
+        height: 48px;
+        min-height: 48px;
+    }
+
+    .main-navigation__list {
+        gap: 24px;
+    }
+
+    .main-navigation__list a {
+        font-size: 15px;
+    }
+
+    .main-navigation__list a::after {
+        bottom: 8px;
+    }
+
+    .about-single-screen__inner {
+        padding-top: 6px;
+        padding-bottom: 8px;
+    }
+
+    .about-single-screen__heading {
+        margin-bottom: 6px;
+        font-size: 26px;
+    }
+
+    .about-single-screen__content {
+        grid-template-columns:
+            210px
+            minmax(0, 1fr);
+        gap: 34px;
+    }
+
+    .about-single-screen__image {
+        width: 210px;
+        height: 210px;
+        min-height: 0;
+    }
+
+    .about-single-screen__copy p {
+        font-size: 16.1px;
+        line-height: 1.55;
+    }
+}
+
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (max-width: 980px) and (min-width: 761px) {
+    .main-navigation__inner {
+        width: calc(100% - 32px);
+    }
+
+    .main-navigation__list {
+        gap: 19px;
+    }
+
+    .main-navigation__list a {
+        font-size: 15px;
+    }
+
+    .about-single-screen__inner {
+        width: calc(100% - 48px);
+    }
+
+    .about-single-screen__content {
+        grid-template-columns:
+            220px
+            minmax(0, 1fr);
+        gap: 32px;
+    }
+
+    .about-single-screen__image {
+        width: 220px;
+        height: 235px;
+    }
+
+    .about-single-screen__copy p {
+        font-size: 16px;
+        line-height: 1.58;
+    }
+}
+
+
+/* ============================================================
+   MOBILE NAVIGATION AND CONTENT
+============================================================ */
+
+@media (max-width: 760px) {
+    .main-navigation {
+        height: auto;
+        min-height: 66px;
+        overflow: visible;
+    }
+
+    .main-navigation__inner {
+        width: 100%;
+        height: auto;
+        min-height: 66px;
+    }
+
+    .mobile-navigation-button {
+        position: relative;
+        z-index: 3;
+        display: flex;
+        width: 100%;
+        min-height: 66px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
+        border: 0;
+        background: transparent;
+        color: var(--accent);
+        cursor: pointer;
+        font-family: var(--display-font);
+        font-size: 23px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .mobile-navigation-button__icon {
+        display: flex;
+        width: 26px;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .mobile-navigation-button__icon span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: currentColor;
+        transition:
+            transform 180ms ease,
+            opacity 180ms ease;
+    }
+
+    .mobile-navigation-button[aria-expanded="true"]
+        .mobile-navigation-button__icon
+        span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .mobile-navigation-button[aria-expanded="true"]
+        .mobile-navigation-button__icon
+        span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-navigation-button[aria-expanded="true"]
+        .mobile-navigation-button__icon
+        span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .main-navigation__list {
+        position: absolute;
+        top: 66px;
+        right: 0;
+        left: 0;
+        display: grid;
+        width: 100%;
+        height: auto;
+        max-height: 0;
+        min-height: 0;
+        grid-template-columns: 1fr;
+        gap: 0;
+        overflow: hidden;
+        padding: 0;
+        background: var(--navigation-background);
+        opacity: 0;
+        visibility: hidden;
+        transition:
+            max-height 220ms ease,
+            opacity 180ms ease,
+            visibility 180ms ease;
+    }
+
+    .main-navigation__list.is-open {
+        max-height: calc(100vh - 66px);
+        overflow-y: auto;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .main-navigation__list li {
+        height: auto;
+        min-height: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .main-navigation__list a {
+        display: flex;
+        width: 100%;
+        height: auto;
+        min-height: 55px;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 20px;
+        font-size: 22px;
+    }
+
+    .main-navigation__list a::after {
+        display: none;
+    }
+
+    .about-page__main {
+        height: auto;
+        overflow: visible;
+    }
+
+    .about-single-screen {
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+        padding: 34px 0 48px;
+    }
+
+    .about-single-screen__inner {
+        display: block;
+        width: min(620px, calc(100% - 32px));
+        height: auto;
+        margin: 0 auto;
+        padding: 0;
+        overflow: visible;
+    }
+
+    .about-single-screen__heading {
+        margin: 0 0 26px;
+        font-size: 38px;
+    }
+
+    .about-single-screen__heading::after {
+        margin-top: 12px;
+    }
+
+    .about-single-screen__content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 26px;
+        overflow: visible;
+    }
+
+    .about-single-screen__image {
+        width: min(100%, 320px);
+        height: auto;
+        min-height: 350px;
+        margin: 0 auto;
+    }
+
+    .about-single-screen__copy {
+        max-width: none;
+    }
+
+    .about-single-screen__copy p {
+        font-size: 18.4px;
+        line-height: 1.68;
+    }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+============================================================ */
+
+@media (max-width: 480px) {
+    .mobile-navigation-button {
+        padding-right: 18px;
+        padding-left: 18px;
+        font-size: 21px;
+    }
+
+    .about-single-screen {
+        padding: 28px 0 40px;
+    }
+
+    .about-single-screen__inner {
+        width: calc(100% - 24px);
+    }
+
+    .about-single-screen__heading {
+        margin-bottom: 22px;
+        font-size: 32px;
+    }
+
+    .about-single-screen__image {
+        width: min(100%, 290px);
+        min-height: 320px;
+    }
+
+    .about-single-screen__copy p {
+        font-size: 16px;
+        line-height: 1.62;
+    }
+}
+
+/* ============================================================
+   GAURANG DARJI PORTFOLIO
+   ABOUT ME PAGE
+   PART 3 OF 4
+
+   Responsive scaling, overflow safety and layout refinements
+============================================================ */
+
+
+/* ============================================================
+   LARGE DESKTOP
+============================================================ */
+
+@media (min-width: 1301px) {
+    .hero__content,
+    .about-single-screen__inner {
+        width: min(var(--content-width), calc(100% - 80px));
+    }
+
+    .about-single-screen__content {
+        grid-template-columns:
+            250px
+            minmax(0, 790px);
+        gap: 44px;
+    }
+}
+
+
+/* ============================================================
+   STANDARD DESKTOP AND LAPTOP WIDTHS
+============================================================ */
+
+@media (min-width: 981px) and (max-width: 1300px) {
+    .hero__content,
+    .about-single-screen__inner {
+        width: min(1100px, calc(100% - 56px));
+    }
+
+    .hero__first-name {
+        font-size: clamp(56px, 5vw, 66px);
+    }
+
+    .hero__last-name {
+        font-size: clamp(74px, 6.7vw, 87px);
+    }
+
+    .hero__portrait-wrapper {
+        width: 280px;
+        height: 284px;
+    }
+
+    .main-navigation__inner {
+        width: min(1040px, calc(100% - 40px));
+    }
+
+    .main-navigation__list {
+        gap: 24px;
+    }
+
+    .main-navigation__list a {
+        font-size: 16px;
+    }
+
+    .about-single-screen__content {
+        grid-template-columns:
+            230px
+            minmax(0, 1fr);
+        gap: 38px;
+    }
+
+    .about-single-screen__image {
+        width: 230px;
+        height: 250px;
+        min-height: 220px;
+    }
+
+    .about-single-screen__copy p {
+        font-size: clamp(16px, 1.35vw, 18px);
+        line-height: 1.62;
+    }
+}
+
+
+/* ============================================================
+   MEDIUM-HEIGHT DESKTOP SCREENS
+============================================================ */
+
+@media (min-width: 761px) and (min-height: 761px) and (max-height: 900px) {
+    .about-page {
+        grid-template-rows:
+            275px
+            51px
+            minmax(0, 1fr);
+    }
+
+    .hero {
+        height: 275px;
+        min-height: 275px;
+    }
+
+    .hero__identity {
+        bottom: 21px;
+    }
+
+    .hero__first-name {
+        font-size: 62px;
+    }
+
+    .hero__last-name {
+        font-size: 82px;
+    }
+
+    .hero__role {
+        margin-top: 9px;
+        font-size: 15px;
+    }
+
+    .hero__portrait-wrapper {
+        width: 270px;
+        height: 269px;
+    }
+
+    .main-navigation,
+    .main-navigation__inner,
+    .main-navigation__list,
+    .main-navigation__list li,
+    .main-navigation__list a {
+        height: 51px;
+        min-height: 51px;
+    }
+
+    .main-navigation__list a::after {
+        bottom: 8px;
+    }
+
+    .about-single-screen__inner {
+        padding-top: 6px;
+        padding-bottom: 8px;
+    }
+
+    .about-single-screen__heading {
+        margin-bottom: 6px;
+        font-size: 29px;
+    }
+
+    .about-single-screen__content {
+        grid-template-columns:
+            230px
+            minmax(0, 1fr);
+        gap: 38px;
+    }
+
+    .about-single-screen__image {
+        width: 230px;
+        height: 245px;
+    }
+
+    .about-single-screen__copy p {
+        font-size: 17px;
+        line-height: 1.58;
+    }
+}
+
+
+/* ============================================================
+   TALL DESKTOP SCREENS
+============================================================ */
+
+@media (min-width: 761px) and (min-height: 901px) {
+    .about-single-screen__inner {
+        padding-top: 10px;
+        padding-bottom: 14px;
+    }
+
+    .about-single-screen__heading {
+        margin-bottom: 10px;
+        font-size: 32px;
+    }
+
+    .about-single-screen__content {
+        grid-template-columns:
+            260px
+            minmax(0, 1fr);
+        gap: 48px;
+    }
+
+    .about-single-screen__image {
+        width: 260px;
+        height: 285px;
+    }
+
+    .about-single-screen__copy p {
+        font-size: clamp(18px, 1.35vw, 20px);
+        line-height: 1.68;
+    }
+}
+
+
+/* ============================================================
+   NARROW TABLET LANDSCAPE
+============================================================ */
+
+@media (min-width: 761px) and (max-width: 900px) {
+    .hero__content,
+    .about-single-screen__inner {
+        width: calc(100% - 40px);
+    }
+
+    .hero__first-name {
+        font-size: 54px;
+    }
+
+    .hero__last-name {
+        font-size: 72px;
+    }
+
+    .hero__portrait-wrapper {
+        width: 250px;
+        height: 275px;
+    }
+
+    .main-navigation__inner {
+        width: calc(100% - 20px);
+    }
+
+    .main-navigation__list {
+        gap: 14px;
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+
+    .main-navigation__list a {
+        font-size: 14px;
+    }
+
+    .about-single-screen__content {
+        grid-template-columns:
+            205px
+            minmax(0, 1fr);
+        gap: 28px;
+    }
+
+    .about-single-screen__image {
+        width: 205px;
+        height: 220px;
+        min-height: 200px;
+    }
+
+    .about-single-screen__copy p {
+        font-size: 15px;
+        line-height: 1.52;
+    }
+}
+
+
+/* ============================================================
+   MOBILE LANDSCAPE
+============================================================ */
+
+@media (max-width: 760px) and (orientation: landscape) {
+    .hero {
+        height: 390px;
+        min-height: 390px;
+    }
+
+    .hero__identity {
+        top: 24px;
+    }
+
+    .hero__first-name {
+        font-size: 40px;
+    }
+
+    .hero__last-name {
+        font-size: 58px;
+    }
+
+    .hero__role {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    .hero__portrait-wrapper {
+        width: 315px;
+        height: 285px;
+    }
+
+    .about-single-screen {
+        padding-top: 28px;
+    }
+
+    .about-single-screen__image {
+        min-height: 300px;
+    }
+}
+
+
+/* ============================================================
+   EXTRA-SMALL MOBILE
+============================================================ */
+
+@media (max-width: 380px) {
+    .hero {
+        height: 420px;
+        min-height: 420px;
+    }
+
+    .hero__identity {
+        top: 24px;
+        right: 12px;
+        left: 12px;
+    }
+
+    .hero__first-name {
+        font-size: 38px;
+    }
+
+    .hero__last-name {
+        font-size: 56px;
+    }
+
+    .hero__role {
+        font-size: 14px;
+    }
+
+    .hero__portrait-wrapper {
+        width: 300px;
+        height: 292px;
+    }
+
+    .about-single-screen__heading {
+        font-size: 29px;
+    }
+
+    .about-single-screen__image {
+        width: min(100%, 270px);
+        min-height: 300px;
+    }
+
+    .about-single-screen__copy p {
+        font-size: 15px;
+        line-height: 1.58;
+    }
+}
+
+
+/* ============================================================
+   IMAGE PLACEHOLDER SAFETY
+============================================================ */
+
+.about-single-screen__image {
+    position: relative;
+    isolation: isolate;
+}
+
+.about-single-screen__image::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    content: "";
+    pointer-events: none;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.16),
+            transparent 44%
+        );
+}
+
+
+/* ============================================================
+   TEXT WRAPPING SAFETY
+============================================================ */
+
+.hero__name,
+.hero__role,
+.main-navigation__list a,
+.about-single-screen__heading {
+    white-space: nowrap;
+}
+
+.about-single-screen__copy,
+.about-single-screen__copy p {
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
+
+/* ============================================================
+   PREVENT DESKTOP OVERFLOW
+============================================================ */
+
+.about-page__main,
+.about-single-screen,
+.about-single-screen__inner,
+.about-single-screen__content,
+.about-single-screen__copy {
+    min-width: 0;
+}
+
+@media (min-width: 761px) {
+    .about-single-screen__copy {
+        max-height: 100%;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 760px) {
+    .about-single-screen__copy {
+        overflow: visible;
+    }
+}
+
+/* ============================================================
+   GAURANG DARJI PORTFOLIO
+   ABOUT ME PAGE
+   PART 4 OF 4
+
+   Motion, accessibility, focus states and final safeguards
+============================================================ */
+
+
+/* ============================================================
+   PAGE LOAD ANIMATIONS
+============================================================ */
+
+@keyframes aboutFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes aboutFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.hero__identity {
+    animation: aboutFadeUp 0.7s ease both;
+}
+
+.hero__portrait-wrapper {
+    animation: aboutFadeIn 0.9s ease both;
+}
+
+.main-navigation {
+    animation: aboutFadeIn 0.8s ease both;
+}
+
+.about-single-screen__heading {
+    animation: aboutFadeUp 0.7s ease 0.08s both;
+}
+
+.about-single-screen__image {
+    animation: aboutFadeUp 0.75s ease 0.16s both;
+}
+
+.about-single-screen__copy {
+    animation: aboutFadeUp 0.75s ease 0.24s both;
+}
+
+
+/* ============================================================
+   HOVER POLISH
+============================================================ */
+
+.hero__portrait {
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+.hero__portrait:hover {
+    transform: translateY(-3px);
+    filter:
+        grayscale(0.15)
+        contrast(1.1)
+        brightness(1.1)
+        saturate(0.9);
+}
+
+.about-single-screen__image {
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+.about-single-screen__image:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ============================================================
+   TEXT SELECTION
+============================================================ */
+
+::selection {
+    background: var(--accent);
+    color: #111111;
+}
+
+::-moz-selection {
+    background: var(--accent);
+    color: #111111;
+}
+
+
+/* ============================================================
+   SCROLLBAR
+============================================================ */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #d8d8d5;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: #8d8d8d;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6f6f6f;
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* ============================================================
+   PRINT
+============================================================ */
+
+@media print {
+    body {
+        background: #ffffff;
+    }
+
+    .hero {
+        background: #555555;
+    }
+
+    .main-navigation {
+        display: none;
+    }
+
+    .about-page {
+        display: block;
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+        box-shadow: none;
+    }
+
+    .about-page__main,
+    .about-single-screen,
+    .about-single-screen__inner,
+    .about-single-screen__content {
+        height: auto;
+        overflow: visible;
+    }
+
+    .about-single-screen__content {
+        grid-template-columns: 220px minmax(0, 1fr);
+    }
+}
+
+
+/* ============================================================
+   UTILITY CLASSES
+============================================================ */
+
+.hidden {
+    display: none !important;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.no-scroll {
+    overflow: hidden !important;
+}
+
+
+/* ============================================================
+   FINAL LAYOUT SAFETY
+============================================================ */
+
+.hero,
+.hero__content,
+.main-navigation,
+.main-navigation__inner,
+.about-page__main,
+.about-single-screen,
+.about-single-screen__inner,
+.about-single-screen__content,
+.about-single-screen__copy {
+    min-width: 0;
+}
+
+.about-single-screen__image {
+    flex-shrink: 0;
+}
+
+.about-single-screen__copy p {
+    max-width: 100%;
+}
+
+@media (min-width: 761px) {
+    .about-page__main,
+    .about-single-screen,
+    .about-single-screen__inner,
+    .about-single-screen__content {
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 760px) {
+    .about-page__main,
+    .about-single-screen,
+    .about-single-screen__inner,
+    .about-single-screen__content,
+    .about-single-screen__copy {
+        overflow: visible;
+    }
+}
+
+
+/* ============================================================
+   END OF ABOUT ME PAGE STYLES
+============================================================ */
+
+
+/* ============================================================
+   REMOVE ACTIVE NAVIGATION UNDERLINE
+============================================================ */
+
+.main-navigation__list a.is-active::after{
+    display:none;
+}
+
+
+/* EXACT HOME HEADER MATCH START */
+
+/*
+ * Exact Home-page header dimensions:
+ * Hero: 316px
+ * Intro strip: 42px
+ * Navigation: 56px
+ */
+
+@media (min-width: 761px) {
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .about-page {
+        display: grid;
+        width: min(100%, 1552px);
+        height: 100vh;
+        min-height: 0;
+        grid-template-rows:
+            316px
+            42px
+            56px
+            minmax(0, 1fr);
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .about-page .hero {
+        position: relative;
+        width: 100%;
+        height: 316px;
+        min-height: 316px;
+        max-height: 316px;
+        overflow: hidden;
+    }
+
+    .about-page .hero__content {
+        position: relative;
+        width: min(1180px, calc(100% - 64px));
+        height: 316px;
+        margin: 0 auto;
+    }
+
+    .about-page .hero__identity {
+        position: absolute;
+        top: auto;
+        right: auto;
+        bottom: 26px;
+        left: 0;
+        margin: 0;
+        transform: none;
+        text-align: left;
+    }
+
+    .about-page .hero__name {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0;
+        font-family: var(--display-font);
+        font-weight: 600;
+        line-height: 0.75;
+        letter-spacing: -2.4px;
+        text-transform: uppercase;
+    }
+
+    .about-page .hero__first-name {
+        display: block;
+        margin: 0;
+        color: var(--white);
+        font-size: clamp(62px, 5.2vw, 73px);
+        font-weight: 600;
+        line-height: 0.82;
+    }
+
+    .about-page .hero__last-name {
+        display: block;
+        margin: 0;
+        color: var(--accent);
+        font-size: clamp(82px, 7vw, 96px);
+        font-weight: 500;
+        line-height: 0.76;
+    }
+
+    .about-page .hero__role {
+        margin: 13px 0 0 2px;
+        color: var(--soft-white);
+        font-family: var(--body-font);
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 1.2;
+        letter-spacing: 0.1px;
+        text-align: left;
+    }
+
+    .about-page .hero__portrait-wrapper {
+        position: absolute;
+        top: auto;
+        right: 0;
+        bottom: 0;
+        left: auto;
+        width: 312px;
+        height: 308px;
+        margin: 0;
+        transform: none;
+    }
+
+    .about-page .hero__portrait {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center bottom;
+        filter:
+            grayscale(0.28)
+            contrast(1.08)
+            brightness(1.08)
+            saturate(0.82);
+    }
+
+    .about-header-strip {
+        display: block;
+        width: 100%;
+        height: 42px;
+        min-height: 42px;
+        max-height: 42px;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: #606060;
+    }
+
+    .about-page .main-navigation,
+    .about-page .main-navigation__inner,
+    .about-page .main-navigation__list,
+    .about-page .main-navigation__list li,
+    .about-page .main-navigation__list a {
+        height: 56px;
+        min-height: 56px;
+        max-height: 56px;
+    }
+
+    .about-page .main-navigation {
+        width: 100%;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .about-page .main-navigation__inner {
+        width: min(1100px, calc(100% - 48px));
+        margin: 0 auto;
+    }
+
+    .about-page .main-navigation__list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        margin: 0;
+        padding: 0 16px;
+    }
+
+    .about-page .main-navigation__list a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        font-size: 17px;
+        line-height: 1;
+    }
+
+    .about-page .main-navigation__list a::after {
+        bottom: 9px;
+    }
+
+    .about-page .main-navigation__list a.is-active::after {
+        display: none;
+    }
+
+    .about-page__main {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        margin: 0;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 761px) and (max-height: 760px) {
+
+    .about-page {
+        grid-template-rows:
+            260px
+            38px
+            50px
+            minmax(0, 1fr);
+    }
+
+    .about-page .hero,
+    .about-page .hero__content {
+        height: 260px;
+        min-height: 260px;
+        max-height: 260px;
+    }
+
+    .about-page .hero__identity {
+        bottom: 20px;
+    }
+
+    .about-page .hero__first-name {
+        font-size: 57px;
+    }
+
+    .about-page .hero__last-name {
+        font-size: 75px;
+    }
+
+    .about-page .hero__role {
+        margin-top: 8px;
+        font-size: 14px;
+    }
+
+    .about-page .hero__portrait-wrapper {
+        width: 255px;
+        height: 255px;
+    }
+
+    .about-header-strip {
+        height: 38px;
+        min-height: 38px;
+        max-height: 38px;
+    }
+
+    .about-page .main-navigation,
+    .about-page .main-navigation__inner,
+    .about-page .main-navigation__list,
+    .about-page .main-navigation__list li,
+    .about-page .main-navigation__list a {
+        height: 50px;
+        min-height: 50px;
+        max-height: 50px;
+    }
+
+    .about-page .main-navigation__list a {
+        font-size: 15px;
+    }
+
+    .about-page .main-navigation__list a::after {
+        bottom: 8px;
+    }
+}
+
+@media (max-width: 760px) {
+
+    html,
+    body {
+        height: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .about-page {
+        display: block;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .about-header-strip {
+        display: block;
+        width: 100%;
+        height: 54px;
+        min-height: 54px;
+        background: #606060;
+    }
+}
+
+/* EXACT HOME HEADER MATCH END */
+
+
+/* ABOUT INTRO STRIP CORRECTION START */
+
+.intro-strip {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    width: 100%;
+    height: 42px;
+    min-height: 42px;
+    max-height: 42px;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 5px 24px;
+    overflow: hidden;
+    background: var(--strip-background, #606060);
+    color: #d1d1cf;
+    text-align: center;
+}
+
+.intro-strip p {
+    margin: 0;
+    color: #d1d1cf;
+    font-family: var(--body-font);
+    font-size: clamp(14px, 1.1vw, 16px);
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.2px;
+}
+
+.intro-strip__quote {
+    display: inline-block;
+}
+
+.about-header-strip {
+    display: none !important;
+}
+
+@media (min-width: 761px) {
+
+    .about-page {
+        grid-template-rows:
+            316px
+            42px
+            56px
+            minmax(0, 1fr) !important;
+    }
+
+    .about-page .hero,
+    .about-page .hero__content {
+        height: 316px !important;
+        min-height: 316px !important;
+        max-height: 316px !important;
+    }
+
+    .about-page .main-navigation,
+    .about-page .main-navigation__inner,
+    .about-page .main-navigation__list,
+    .about-page .main-navigation__list li,
+    .about-page .main-navigation__list a {
+        height: 56px !important;
+        min-height: 56px !important;
+        max-height: 56px !important;
+    }
+}
+
+@media (min-width: 761px) and (max-height: 760px) {
+
+    .about-page {
+        grid-template-rows:
+            260px
+            38px
+            50px
+            minmax(0, 1fr) !important;
+    }
+
+    .about-page .hero,
+    .about-page .hero__content {
+        height: 260px !important;
+        min-height: 260px !important;
+        max-height: 260px !important;
+    }
+
+    .intro-strip {
+        height: 38px;
+        min-height: 38px;
+        max-height: 38px;
+    }
+
+    .intro-strip p {
+        font-size: 13px;
+    }
+
+    .about-page .main-navigation,
+    .about-page .main-navigation__inner,
+    .about-page .main-navigation__list,
+    .about-page .main-navigation__list li,
+    .about-page .main-navigation__list a {
+        height: 50px !important;
+        min-height: 50px !important;
+        max-height: 50px !important;
+    }
+}
+
+@media (max-width: 760px) {
+
+    .intro-strip {
+        height: auto;
+        min-height: 58px;
+        max-height: none;
+        padding: 10px 20px;
+    }
+
+    .intro-strip p {
+        max-width: 520px;
+        font-size: 15px;
+        line-height: 1.45;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .intro-strip {
+        min-height: 54px;
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    .intro-strip p {
+        font-size: 13px;
+    }
+}
+
+/* ABOUT INTRO STRIP CORRECTION END */

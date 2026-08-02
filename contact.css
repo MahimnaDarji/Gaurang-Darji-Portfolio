@@ -1,0 +1,2402 @@
+/* ============================================================
+   GAURANG DARJI PORTFOLIO
+   CONTACT PAGE
+   PART 1 OF 4
+
+   Foundation, page shell, hero and introduction strip
+============================================================ */
+
+
+/* ============================================================
+   DESIGN TOKENS
+============================================================ */
+
+:root{
+    --page-background:#d8d8d5;
+
+    --hero-background:#3d3d3d;
+    --hero-background-deep:#353535;
+
+    --strip-background:#606060;
+
+    --navigation-background:#22282c;
+    --navigation-background-light:#293035;
+
+    --content-background:#efeeeb;
+    --content-background-secondary:#e9e8e4;
+
+    --white:#ffffff;
+    --soft-white:#f3f3f1;
+
+    --text-dark:#181818;
+    --text-medium:#6f706f;
+    --text-muted:#999894;
+
+    --accent:#f3aa2c;
+    --accent-hover:#ffc04a;
+
+    --site-max-width:1552px;
+    --content-width:1180px;
+
+    --display-font:
+        "Barlow Condensed",
+        "Arial Narrow",
+        Impact,
+        sans-serif;
+
+    --body-font:
+        "Libre Franklin",
+        Helvetica,
+        Arial,
+        sans-serif;
+}
+
+
+/* ============================================================
+   RESET
+============================================================ */
+
+*,
+*::before,
+*::after{
+    box-sizing:border-box;
+}
+
+html{
+    width:100%;
+    min-width:320px;
+    min-height:100%;
+    scroll-behavior:smooth;
+}
+
+body{
+    width:100%;
+    min-width:320px;
+    min-height:100%;
+    margin:0;
+
+    overflow-x:hidden;
+    overflow-y:hidden;
+
+    background:var(--page-background);
+
+    color:var(--text-dark);
+
+    font-family:var(--body-font);
+
+    line-height:1.5;
+
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+
+    text-rendering:optimizeLegibility;
+}
+
+body.navigation-open{
+    overflow:hidden;
+}
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+button,
+a{
+    -webkit-tap-highlight-color:transparent;
+}
+
+
+/* ============================================================
+   PAGE SHELL
+
+   Same dimensions as Home / Books / Columns / Profession
+============================================================ */
+
+.contact-page{
+    position:relative;
+
+    display:grid;
+
+    width:min(100%,var(--site-max-width));
+
+    height:100vh;
+
+    margin:0 auto;
+
+    grid-template-rows:
+        316px
+        42px
+        56px
+        minmax(0,1fr);
+
+    overflow:hidden;
+
+    background:var(--content-background);
+
+    box-shadow:
+        0 0 30px rgba(0,0,0,.08),
+        0 0 2px rgba(0,0,0,.18);
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.hero{
+    position:relative;
+
+    width:100%;
+    height:316px;
+    min-height:316px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--hero-background) 0%,
+            var(--hero-background) 58%,
+            var(--hero-background-deep) 100%
+        );
+}
+
+
+/* ============================================================
+   HERO TEXTURE
+============================================================ */
+
+.hero__texture{
+    position:absolute;
+    inset:0;
+
+    opacity:.75;
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle at 4px 4px,
+            rgba(210,210,207,.62) 0 1.5px,
+            transparent 1.7px
+        )
+        0 0 / 11px 11px,
+
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(205,205,201,.42) 0,
+            rgba(205,205,201,.16) 26%,
+            transparent 58%
+        ),
+
+        linear-gradient(
+            to bottom,
+            rgba(166,168,164,.72) 0,
+            rgba(116,117,114,.42) 10%,
+            rgba(61,61,61,.10) 30%,
+            transparent 48%
+        );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            #000 0,
+            #000 18%,
+            rgba(0,0,0,.40) 36%,
+            transparent 58%
+        );
+}
+
+
+/* ============================================================
+   HERO CONTENT
+============================================================ */
+
+.hero__content{
+    position:relative;
+    z-index:2;
+
+    width:min(var(--content-width),calc(100% - 64px));
+    height:100%;
+
+    margin:0 auto;
+}
+
+
+/* ============================================================
+   HERO IDENTITY
+============================================================ */
+
+.hero__identity{
+    position:absolute;
+
+    left:0;
+    bottom:26px;
+
+    z-index:3;
+}
+
+.hero__name{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+
+    margin:0;
+
+    font-family:var(--display-font);
+
+    font-weight:600;
+
+    line-height:.75;
+
+    letter-spacing:-2.4px;
+
+    text-transform:uppercase;
+}
+
+.hero__first-name{
+    display:block;
+
+    margin:0;
+
+    color:var(--white);
+
+    font-size:clamp(62px,5.2vw,73px);
+
+    line-height:.82;
+}
+
+.hero__last-name{
+    display:block;
+
+    margin:0;
+
+    color:var(--accent);
+
+    font-size:clamp(82px,7vw,96px);
+
+    line-height:.76;
+}
+
+.hero__role{
+    margin:13px 0 0 2px;
+
+    color:var(--soft-white);
+
+    font-size:17px;
+    font-weight:500;
+
+    line-height:1.2;
+}
+
+
+/* ============================================================
+   HERO PORTRAIT
+============================================================ */
+
+.hero__portrait-wrapper{
+    position:absolute;
+
+    right:0;
+    bottom:0;
+
+    width:312px;
+    height:308px;
+}
+
+.hero__portrait{
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+    object-position:center bottom;
+
+    filter:
+        grayscale(.28)
+        contrast(1.08)
+        brightness(1.08)
+        saturate(.82);
+}
+
+
+/* ============================================================
+   INTRO STRIP
+============================================================ */
+
+.intro-strip{
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    width:100%;
+    height:42px;
+
+    background:var(--strip-background);
+}
+
+.intro-strip p{
+    margin:0;
+
+    color:#d3d3d1;
+
+    font-size:15px;
+    font-style:italic;
+    font-weight:600;
+}
+
+
+/* ============================================================
+   RESPONSIVE HERO
+============================================================ */
+
+@media (max-width:760px){
+
+    body{
+        overflow-y:auto;
+    }
+
+    .contact-page{
+        display:flex;
+        flex-direction:column;
+
+        height:auto;
+        min-height:100vh;
+
+        overflow:visible;
+    }
+
+    .hero{
+        height:500px;
+        min-height:500px;
+    }
+
+    .hero__content{
+        display:flex;
+        justify-content:center;
+
+        width:100%;
+        height:100%;
+    }
+
+    .hero__identity{
+        top:34px;
+        left:20px;
+        right:20px;
+        bottom:auto;
+
+        text-align:center;
+    }
+
+    .hero__name{
+        align-items:center;
+    }
+
+    .hero__first-name{
+        font-size:49px;
+    }
+
+    .hero__last-name{
+        font-size:72px;
+    }
+
+    .hero__role{
+        margin-top:16px;
+    }
+
+    .hero__portrait-wrapper{
+        left:50%;
+        right:auto;
+
+        width:390px;
+        height:360px;
+
+        transform:translateX(-50%);
+    }
+
+    .intro-strip{
+        min-height:58px;
+        padding:0 20px;
+    }
+
+    .intro-strip p{
+        text-align:center;
+        line-height:1.4;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .hero{
+        height:445px;
+        min-height:445px;
+    }
+
+    .hero__first-name{
+        font-size:42px;
+    }
+
+    .hero__last-name{
+        font-size:62px;
+    }
+
+    .hero__role{
+        font-size:15px;
+    }
+
+    .hero__portrait-wrapper{
+        width:330px;
+        height:315px;
+    }
+
+}
+/* ============================================================
+   GAURANG DARJI PORTFOLIO
+   CONTACT PAGE
+   PART 2 OF 4
+
+   Navigation and Contact Content
+============================================================ */
+
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+
+.main-navigation{
+    position:relative;
+
+    z-index:10;
+
+    width:100%;
+    height:56px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--navigation-background) 0%,
+            var(--navigation-background-light) 50%,
+            var(--navigation-background) 100%
+        );
+}
+
+.main-navigation::before,
+.main-navigation::after{
+    position:absolute;
+    inset:0;
+
+    content:"";
+
+    pointer-events:none;
+}
+
+.main-navigation::before{
+    opacity:.16;
+
+    background:
+        radial-gradient(
+            circle at 3px 3px,
+            rgba(255,255,255,.25) 0 1px,
+            transparent 1.2px
+        )
+        0 0 / 8px 8px;
+}
+
+.main-navigation::after{
+    opacity:.18;
+
+    background:
+        linear-gradient(
+            115deg,
+            transparent 0 34%,
+            rgba(255,255,255,.08) 34.2% 34.5%,
+            transparent 34.7% 66%,
+            rgba(255,255,255,.06) 66.2% 66.5%,
+            transparent 66.7%
+        );
+}
+
+.main-navigation__inner{
+    position:relative;
+
+    z-index:2;
+
+    width:min(1100px,calc(100% - 48px));
+    height:56px;
+
+    margin:0 auto;
+}
+
+.main-navigation__list{
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:30px;
+
+    width:100%;
+    height:56px;
+
+    margin:0;
+    padding:0;
+
+    list-style:none;
+}
+
+.main-navigation__list li{
+    height:56px;
+}
+
+.main-navigation__list a{
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    height:56px;
+
+    color:var(--accent);
+
+    font-family:var(--display-font);
+    font-size:17px;
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    transition:
+        color .18s ease,
+        transform .18s ease;
+}
+
+.main-navigation__list a::after{
+    position:absolute;
+
+    right:0;
+    left:0;
+    bottom:9px;
+
+    height:2px;
+
+    content:"";
+
+    background:var(--accent);
+
+    transform:scaleX(0);
+
+    transition:transform .18s ease;
+}
+
+.main-navigation__list a:hover,
+.main-navigation__list a:focus-visible{
+    color:var(--accent-hover);
+
+    transform:translateY(-1px);
+
+    outline:none;
+}
+
+.main-navigation__list a:hover::after,
+.main-navigation__list a:focus-visible::after{
+    transform:scaleX(1);
+}
+
+.main-navigation__list a.is-active::after{
+    display:none;
+}
+
+.mobile-navigation-button{
+    display:none;
+}
+
+
+/* ============================================================
+   CONTACT MAIN
+============================================================ */
+
+.contact-page__main{
+    width:100%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--content-background) 0%,
+            var(--content-background-secondary) 100%
+        );
+}
+
+
+/* ============================================================
+   CONTACT SECTION
+============================================================ */
+
+.contact-section{
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+}
+
+.contact-section__texture{
+    position:absolute;
+    inset:0;
+
+    opacity:.50;
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle at 5px 5px,
+            rgba(90,90,90,.15) 0 1px,
+            transparent 1.2px
+        )
+        0 0 / 10px 10px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            #000 0,
+            rgba(0,0,0,.65) 70%,
+            transparent 100%
+        );
+}
+
+.contact-section__inner{
+    position:relative;
+
+    z-index:2;
+
+    width:min(var(--content-width),calc(100% - 64px));
+    height:100%;
+
+    margin:0 auto;
+
+    padding:8px 0 20px;
+}
+
+
+/* ============================================================
+   PAGE TITLE
+============================================================ */
+
+.contact-section__heading{
+    margin:0 0 10px;
+
+    color:#111;
+
+    font-family:var(--display-font);
+    font-size:31px;
+    font-weight:800;
+
+    text-align:center;
+    text-transform:uppercase;
+}
+
+.contact-section__heading::after{
+    display:block;
+
+    width:100%;
+    height:1px;
+
+    margin-top:6px;
+
+    content:"";
+
+    background:rgba(0,0,0,.12);
+}
+
+
+/* ============================================================
+   LAYOUT
+============================================================ */
+
+.contact-layout{
+    display:grid;
+
+    grid-template-columns:
+        390px
+        minmax(0,1fr);
+
+    gap:36px;
+
+    align-items:center;
+
+    height:calc(100% - 50px);
+}
+
+
+/* ============================================================
+   LEFT PANEL
+============================================================ */
+
+.contact-introduction{
+    display:flex;
+
+    flex-direction:column;
+    justify-content:center;
+
+    height:100%;
+
+    padding:36px;
+
+    border:1px solid rgba(0,0,0,.08);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.82),
+            rgba(232,231,227,.95)
+        );
+
+    box-shadow:
+        0 10px 24px rgba(0,0,0,.05);
+}
+
+.contact-introduction__label{
+    margin:0 0 12px;
+
+    color:var(--accent);
+
+    font-family:var(--display-font);
+    font-size:20px;
+    font-weight:700;
+
+    text-transform:uppercase;
+}
+
+.contact-introduction__title{
+    margin:0 0 18px;
+
+    color:#6d6d6d;
+
+    font-family:var(--display-font);
+    font-size:50px;
+    font-weight:700;
+
+    line-height:.95;
+
+    text-transform:uppercase;
+}
+
+.contact-introduction__description{
+    margin:0;
+
+    color:#2d2d2d;
+
+    font-size:16px;
+
+    line-height:1.75;
+}
+
+
+/* ============================================================
+   RIGHT PANEL
+============================================================ */
+
+.contact-details{
+    display:grid;
+
+    gap:18px;
+}
+
+.contact-card{
+    padding:26px 30px;
+
+    border-top:4px solid var(--accent);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.86),
+            rgba(234,233,229,.96)
+        );
+
+    box-shadow:
+        0 10px 24px rgba(0,0,0,.05);
+}
+
+.contact-card__number{
+    margin:0 0 6px;
+
+    color:var(--accent);
+
+    font-family:var(--display-font);
+    font-size:16px;
+    font-weight:700;
+
+    letter-spacing:1px;
+}
+
+.contact-card__label{
+    margin:0 0 10px;
+
+    color:#7a7a7a;
+
+    font-family:var(--display-font);
+    font-size:30px;
+    font-weight:700;
+
+    text-transform:uppercase;
+}
+
+.contact-card__value{
+    display:inline-block;
+
+    color:#1d1d1d;
+
+    font-size:18px;
+    font-weight:500;
+
+    word-break:break-word;
+
+    transition:color .18s ease;
+}
+
+.contact-card__value:hover{
+    color:var(--accent);
+}
+
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (max-width:980px){
+
+    .contact-section__inner{
+        width:calc(100% - 48px);
+    }
+
+    .contact-layout{
+        grid-template-columns:1fr;
+
+        height:auto;
+    }
+
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width:760px){
+
+    .main-navigation{
+        height:auto;
+        overflow:visible;
+    }
+
+    .mobile-navigation-button{
+        display:flex;
+
+        justify-content:space-between;
+        align-items:center;
+
+        width:100%;
+        height:66px;
+
+        padding:0 24px;
+
+        border:none;
+
+        background:transparent;
+
+        color:var(--accent);
+
+        font-family:var(--display-font);
+        font-size:23px;
+        font-weight:700;
+
+        text-transform:uppercase;
+
+        cursor:pointer;
+    }
+
+    .main-navigation__list{
+        display:none;
+    }
+
+    .contact-page__main{
+        height:auto;
+    }
+
+    .contact-section{
+        height:auto;
+
+        padding:22px 0 36px;
+    }
+
+    .contact-section__inner{
+        width:min(620px,calc(100% - 32px));
+
+        height:auto;
+    }
+
+    .contact-layout{
+        grid-template-columns:1fr;
+
+        gap:22px;
+
+        height:auto;
+    }
+
+    .contact-introduction{
+        padding:24px;
+    }
+
+    .contact-introduction__title{
+        font-size:40px;
+    }
+
+    .contact-card{
+        padding:22px;
+    }
+
+    .contact-card__label{
+        font-size:27px;
+    }
+
+}
+
+/* ============================================================
+   GAURANG DARJI PORTFOLIO
+   CONTACT PAGE
+   PART 3 OF 4
+
+   Responsive scaling, interaction polish and layout safeguards
+============================================================ */
+
+
+/* ============================================================
+   LARGE DESKTOP
+============================================================ */
+
+@media (min-width:1301px){
+
+    .hero__content,
+    .contact-section__inner{
+        width:min(var(--content-width),calc(100% - 80px));
+    }
+
+    .contact-layout{
+        grid-template-columns:
+            410px
+            minmax(0,1fr);
+
+        gap:42px;
+    }
+
+    .contact-introduction{
+        padding:40px;
+    }
+
+    .contact-introduction__title{
+        font-size:54px;
+    }
+
+    .contact-card{
+        padding:28px 32px;
+    }
+
+}
+
+
+/* ============================================================
+   STANDARD DESKTOP AND LAPTOP
+============================================================ */
+
+@media (min-width:981px) and (max-width:1300px){
+
+    .hero__content,
+    .contact-section__inner{
+        width:min(1100px,calc(100% - 56px));
+    }
+
+    .hero__first-name{
+        font-size:clamp(62px,5.2vw,70px);
+    }
+
+    .hero__last-name{
+        font-size:clamp(82px,7vw,92px);
+    }
+
+    .hero__portrait-wrapper{
+        width:295px;
+        height:302px;
+    }
+
+    .main-navigation__inner{
+        width:min(1040px,calc(100% - 40px));
+    }
+
+    .main-navigation__list{
+        gap:24px;
+    }
+
+    .main-navigation__list a{
+        font-size:16px;
+    }
+
+    .contact-layout{
+        grid-template-columns:
+            360px
+            minmax(0,1fr);
+
+        gap:30px;
+    }
+
+    .contact-introduction{
+        padding:30px;
+    }
+
+    .contact-introduction__title{
+        font-size:46px;
+    }
+
+    .contact-introduction__description{
+        font-size:15px;
+        line-height:1.68;
+    }
+
+    .contact-card{
+        padding:24px 26px;
+    }
+
+}
+
+
+/* ============================================================
+   MEDIUM DESKTOP WIDTHS
+============================================================ */
+
+@media (min-width:901px) and (max-width:1080px){
+
+    .contact-section__inner{
+        width:calc(100% - 48px);
+    }
+
+    .contact-layout{
+        grid-template-columns:
+            330px
+            minmax(0,1fr);
+
+        gap:26px;
+    }
+
+    .contact-introduction{
+        padding:26px;
+    }
+
+    .contact-introduction__title{
+        font-size:42px;
+    }
+
+    .contact-card__label{
+        font-size:27px;
+    }
+
+    .contact-card__value{
+        font-size:16px;
+    }
+
+}
+
+
+/* ============================================================
+   SHORT LAPTOP SCREENS
+============================================================ */
+
+@media (min-width:761px) and (max-height:760px){
+
+    .contact-page{
+        grid-template-rows:
+            260px
+            38px
+            50px
+            minmax(0,1fr);
+    }
+
+    .hero{
+        height:260px;
+        min-height:260px;
+    }
+
+    .hero__identity{
+        bottom:20px;
+    }
+
+    .hero__first-name{
+        font-size:57px;
+    }
+
+    .hero__last-name{
+        font-size:75px;
+    }
+
+    .hero__role{
+        margin-top:8px;
+        font-size:14px;
+    }
+
+    .hero__portrait-wrapper{
+        width:255px;
+        height:255px;
+    }
+
+    .intro-strip{
+        height:38px;
+        min-height:38px;
+    }
+
+    .intro-strip p{
+        font-size:13px;
+    }
+
+    .main-navigation,
+    .main-navigation__inner,
+    .main-navigation__list,
+    .main-navigation__list li,
+    .main-navigation__list a{
+        height:50px;
+        min-height:50px;
+    }
+
+    .main-navigation__list{
+        gap:24px;
+    }
+
+    .main-navigation__list a{
+        font-size:15px;
+    }
+
+    .main-navigation__list a::after{
+        bottom:8px;
+    }
+
+    .contact-section__inner{
+        padding-top:6px;
+        padding-bottom:10px;
+    }
+
+    .contact-section__heading{
+        margin-bottom:7px;
+        font-size:26px;
+    }
+
+    .contact-layout{
+        grid-template-columns:
+            320px
+            minmax(0,1fr);
+
+        gap:24px;
+
+        height:calc(100% - 42px);
+    }
+
+    .contact-introduction{
+        padding:24px;
+    }
+
+    .contact-introduction__label{
+        margin-bottom:8px;
+        font-size:17px;
+    }
+
+    .contact-introduction__title{
+        margin-bottom:12px;
+        font-size:39px;
+    }
+
+    .contact-introduction__description{
+        font-size:14px;
+        line-height:1.58;
+    }
+
+    .contact-details{
+        gap:12px;
+    }
+
+    .contact-card{
+        padding:16px 22px;
+    }
+
+    .contact-card__number{
+        margin-bottom:4px;
+        font-size:14px;
+    }
+
+    .contact-card__label{
+        margin-bottom:6px;
+        font-size:24px;
+    }
+
+    .contact-card__value{
+        font-size:15px;
+    }
+
+}
+
+
+/* ============================================================
+   NARROW TABLET LANDSCAPE
+============================================================ */
+
+@media (min-width:761px) and (max-width:900px){
+
+    .hero__content,
+    .contact-section__inner{
+        width:calc(100% - 40px);
+    }
+
+    .hero__first-name{
+        font-size:56px;
+    }
+
+    .hero__last-name{
+        font-size:74px;
+    }
+
+    .hero__role{
+        font-size:14px;
+    }
+
+    .hero__portrait-wrapper{
+        width:265px;
+        height:286px;
+    }
+
+    .main-navigation__inner{
+        width:calc(100% - 20px);
+    }
+
+    .main-navigation__list{
+        gap:14px;
+        padding-right:8px;
+        padding-left:8px;
+    }
+
+    .main-navigation__list a{
+        font-size:14px;
+    }
+
+    .contact-layout{
+        grid-template-columns:1fr;
+
+        gap:20px;
+
+        height:auto;
+    }
+
+    .contact-introduction{
+        height:auto;
+    }
+
+    .contact-details{
+        grid-template-columns:
+            repeat(3,minmax(0,1fr));
+
+        gap:14px;
+    }
+
+    .contact-card{
+        padding:20px 16px;
+    }
+
+    .contact-card__label{
+        font-size:23px;
+    }
+
+    .contact-card__value{
+        font-size:14px;
+    }
+
+}
+
+
+/* ============================================================
+   MOBILE MENU ICON
+============================================================ */
+
+@media (max-width:760px){
+
+    .mobile-navigation-button__icon{
+        display:flex;
+
+        width:26px;
+
+        flex-direction:column;
+
+        gap:5px;
+    }
+
+    .mobile-navigation-button__icon span{
+        display:block;
+
+        width:100%;
+        height:2px;
+
+        background:currentColor;
+
+        transition:
+            transform .18s ease,
+            opacity .18s ease;
+    }
+
+    .mobile-navigation-button[aria-expanded="true"]
+        .mobile-navigation-button__icon
+        span:nth-child(1){
+        transform:translateY(7px) rotate(45deg);
+    }
+
+    .mobile-navigation-button[aria-expanded="true"]
+        .mobile-navigation-button__icon
+        span:nth-child(2){
+        opacity:0;
+    }
+
+    .mobile-navigation-button[aria-expanded="true"]
+        .mobile-navigation-button__icon
+        span:nth-child(3){
+        transform:translateY(-7px) rotate(-45deg);
+    }
+
+    .main-navigation__list{
+        position:absolute;
+
+        top:66px;
+        right:0;
+        left:0;
+
+        display:grid;
+
+        width:100%;
+        height:auto;
+        max-height:0;
+
+        grid-template-columns:1fr;
+
+        gap:0;
+
+        overflow:hidden;
+
+        padding:0;
+
+        background:var(--navigation-background);
+
+        opacity:0;
+        visibility:hidden;
+
+        transition:
+            max-height .22s ease,
+            opacity .18s ease,
+            visibility .18s ease;
+    }
+
+    .main-navigation__list.is-open{
+        max-height:calc(100vh - 66px);
+
+        overflow-y:auto;
+
+        opacity:1;
+        visibility:visible;
+    }
+
+    .main-navigation__list li{
+        height:auto;
+
+        border-top:1px solid rgba(255,255,255,.07);
+    }
+
+    .main-navigation__list a{
+        width:100%;
+        height:auto;
+        min-height:55px;
+
+        padding:14px 20px;
+
+        font-size:22px;
+    }
+
+    .main-navigation__list a::after{
+        display:none;
+    }
+
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+============================================================ */
+
+@media (max-width:480px){
+
+    .mobile-navigation-button{
+        padding-right:18px;
+        padding-left:18px;
+
+        font-size:21px;
+    }
+
+    .contact-section{
+        padding-top:18px;
+        padding-bottom:30px;
+    }
+
+    .contact-section__inner{
+        width:calc(100% - 24px);
+    }
+
+    .contact-section__heading{
+        font-size:32px;
+    }
+
+    .contact-introduction{
+        padding:20px;
+    }
+
+    .contact-introduction__label{
+        font-size:17px;
+    }
+
+    .contact-introduction__title{
+        font-size:34px;
+    }
+
+    .contact-introduction__description{
+        font-size:14px;
+        line-height:1.62;
+    }
+
+    .contact-details{
+        gap:16px;
+    }
+
+    .contact-card{
+        padding:18px;
+    }
+
+    .contact-card__label{
+        font-size:25px;
+    }
+
+    .contact-card__value{
+        font-size:15px;
+    }
+
+}
+
+
+/* ============================================================
+   EXTRA-SMALL MOBILE
+============================================================ */
+
+@media (max-width:380px){
+
+    .hero{
+        height:420px;
+        min-height:420px;
+    }
+
+    .hero__identity{
+        top:24px;
+        right:12px;
+        left:12px;
+    }
+
+    .hero__first-name{
+        font-size:38px;
+    }
+
+    .hero__last-name{
+        font-size:56px;
+    }
+
+    .hero__role{
+        font-size:14px;
+    }
+
+    .hero__portrait-wrapper{
+        width:300px;
+        height:292px;
+    }
+
+    .intro-strip p{
+        font-size:12px;
+    }
+
+    .contact-section__heading{
+        font-size:29px;
+    }
+
+    .contact-introduction__title{
+        font-size:31px;
+    }
+
+    .contact-card__label{
+        font-size:23px;
+    }
+
+    .contact-card__value{
+        font-size:14px;
+    }
+
+}
+
+
+/* ============================================================
+   HOVER POLISH
+============================================================ */
+
+.contact-introduction,
+.contact-card{
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+}
+
+.contact-introduction:hover,
+.contact-card:hover{
+    transform:translateY(-3px);
+
+    border-color:rgba(0,0,0,.12);
+
+    box-shadow:
+        0 16px 34px rgba(0,0,0,.08);
+}
+
+
+/* ============================================================
+   TEXT AND OVERFLOW SAFETY
+============================================================ */
+
+.hero__name,
+.hero__role,
+.main-navigation__list a,
+.contact-section__heading{
+    white-space:nowrap;
+}
+
+.contact-page__main,
+.contact-section,
+.contact-section__inner,
+.contact-layout,
+.contact-introduction,
+.contact-details,
+.contact-card{
+    min-width:0;
+}
+
+.contact-introduction__title,
+.contact-introduction__description,
+.contact-card__label,
+.contact-card__value{
+    overflow-wrap:anywhere;
+    word-break:normal;
+}
+
+@media (max-width:760px){
+
+    .contact-page,
+    .contact-page__main,
+    .contact-section,
+    .contact-section__inner,
+    .contact-layout,
+    .contact-introduction,
+    .contact-details,
+    .contact-card{
+        overflow:visible;
+    }
+
+}
+
+
+/* ============================================================
+   GAURANG DARJI PORTFOLIO
+   CONTACT PAGE
+   PART 4 OF 4
+
+   Motion, accessibility, print and final safeguards
+============================================================ */
+
+
+/* ============================================================
+   PAGE LOAD ANIMATIONS
+============================================================ */
+
+@keyframes contactFadeUp{
+    from{
+        opacity:0;
+        transform:translateY(22px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes contactFadeIn{
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+.hero__identity{
+    animation:contactFadeUp .7s ease both;
+}
+
+.hero__portrait-wrapper{
+    animation:contactFadeIn .9s ease both;
+}
+
+.intro-strip{
+    animation:contactFadeIn .8s ease both;
+}
+
+.main-navigation{
+    animation:contactFadeIn .8s ease both;
+}
+
+.contact-section__heading{
+    animation:contactFadeUp .7s ease .08s both;
+}
+
+.contact-introduction{
+    animation:contactFadeUp .72s ease .16s both;
+}
+
+.contact-card{
+    animation:contactFadeUp .72s ease both;
+}
+
+.contact-card:nth-child(1){
+    animation-delay:.20s;
+}
+
+.contact-card:nth-child(2){
+    animation-delay:.26s;
+}
+
+.contact-card:nth-child(3){
+    animation-delay:.32s;
+}
+
+
+/* ============================================================
+   HERO POLISH
+============================================================ */
+
+.hero__portrait{
+    transition:
+        transform .35s ease,
+        filter .35s ease;
+}
+
+.hero__portrait:hover{
+    transform:translateY(-3px);
+
+    filter:
+        grayscale(.15)
+        contrast(1.1)
+        brightness(1.1)
+        saturate(.9);
+}
+
+
+/* ============================================================
+   CONTACT LINK POLISH
+============================================================ */
+
+.contact-card__value{
+    position:relative;
+}
+
+.contact-card__value::after{
+    position:absolute;
+
+    right:0;
+    bottom:-4px;
+    left:0;
+
+    height:1px;
+
+    content:"";
+
+    background:currentColor;
+
+    transform:scaleX(0);
+    transform-origin:left;
+
+    transition:transform .18s ease;
+}
+
+.contact-card__value:hover::after,
+.contact-card__value:focus-visible::after{
+    transform:scaleX(1);
+}
+
+
+/* ============================================================
+   FOCUS STATES
+============================================================ */
+
+a:focus-visible,
+button:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+}
+
+
+/* ============================================================
+   TEXT SELECTION
+============================================================ */
+
+::selection{
+    background:var(--accent);
+    color:#111111;
+}
+
+::-moz-selection{
+    background:var(--accent);
+    color:#111111;
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+
+@media (prefers-reduced-motion:reduce){
+
+    html{
+        scroll-behavior:auto;
+    }
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+        scroll-behavior:auto !important;
+    }
+
+}
+
+
+/* ============================================================
+   PRINT
+============================================================ */
+
+@media print{
+
+    body{
+        background:#ffffff;
+    }
+
+    .hero{
+        background:#555555;
+    }
+
+    .intro-strip,
+    .main-navigation{
+        display:none;
+    }
+
+    .contact-page{
+        display:block;
+
+        width:100%;
+        height:auto;
+        min-height:0;
+
+        overflow:visible;
+
+        box-shadow:none;
+    }
+
+    .contact-page__main,
+    .contact-section,
+    .contact-section__inner,
+    .contact-layout,
+    .contact-introduction,
+    .contact-details,
+    .contact-card{
+        width:100%;
+        height:auto;
+
+        overflow:visible;
+    }
+
+    .contact-layout{
+        grid-template-columns:1fr;
+    }
+
+    .contact-introduction,
+    .contact-card{
+        break-inside:avoid;
+
+        box-shadow:none;
+    }
+
+}
+
+
+/* ============================================================
+   UTILITY CLASSES
+============================================================ */
+
+.hidden{
+    display:none !important;
+}
+
+.visually-hidden{
+    position:absolute !important;
+
+    width:1px;
+    height:1px;
+
+    overflow:hidden;
+
+    clip:rect(0 0 0 0);
+    clip-path:inset(50%);
+
+    white-space:nowrap;
+}
+
+.no-scroll{
+    overflow:hidden !important;
+}
+
+
+/* ============================================================
+   FINAL HEADER CONSISTENCY
+============================================================ */
+
+@media (min-width:761px){
+
+    .contact-page{
+        grid-template-rows:
+            316px
+            42px
+            56px
+            minmax(0,1fr);
+    }
+
+    .hero{
+        height:316px;
+        min-height:316px;
+        max-height:316px;
+    }
+
+    .intro-strip{
+        height:42px;
+        min-height:42px;
+        max-height:42px;
+    }
+
+    .main-navigation,
+    .main-navigation__inner,
+    .main-navigation__list,
+    .main-navigation__list li,
+    .main-navigation__list a{
+        height:56px;
+        min-height:56px;
+        max-height:56px;
+    }
+
+}
+
+
+/* ============================================================
+   FINAL SHORT-SCREEN CONSISTENCY
+============================================================ */
+
+@media (min-width:761px) and (max-height:760px){
+
+    .contact-page{
+        grid-template-rows:
+            260px
+            38px
+            50px
+            minmax(0,1fr);
+    }
+
+    .hero{
+        height:260px;
+        min-height:260px;
+        max-height:260px;
+    }
+
+    .intro-strip{
+        height:38px;
+        min-height:38px;
+        max-height:38px;
+    }
+
+    .main-navigation,
+    .main-navigation__inner,
+    .main-navigation__list,
+    .main-navigation__list li,
+    .main-navigation__list a{
+        height:50px;
+        min-height:50px;
+        max-height:50px;
+    }
+
+}
+
+
+/* ============================================================
+   FINAL MOBILE SAFETY
+============================================================ */
+
+@media (max-width:760px){
+
+    .contact-page,
+    .contact-page__main,
+    .contact-section,
+    .contact-section__inner,
+    .contact-layout,
+    .contact-introduction,
+    .contact-details,
+    .contact-card{
+        height:auto;
+        min-height:0;
+
+        overflow:visible;
+    }
+
+    .contact-page{
+        min-height:100vh;
+    }
+
+}
+
+
+/* ============================================================
+   FINAL LAYOUT SAFETY
+============================================================ */
+
+.hero,
+.hero__content,
+.intro-strip,
+.main-navigation,
+.main-navigation__inner,
+.contact-page__main,
+.contact-section,
+.contact-section__inner,
+.contact-layout,
+.contact-introduction,
+.contact-details,
+.contact-card{
+    min-width:0;
+}
+
+.contact-card__value{
+    max-width:100%;
+}
+
+.contact-introduction__description{
+    max-width:100%;
+}
+
+
+/* ============================================================
+   END OF CONTACT PAGE STYLES
+============================================================ */
+
+
+/* CONTACT ONE SCREEN FIX START */
+
+@media (min-width: 761px) {
+
+    html,
+    body.contact-body {
+        width: 100%;
+        height: 100%;
+        min-height: 100%;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    body.contact-body .contact-page {
+        display: grid;
+        width: min(100%, 1552px);
+        height: 100vh;
+        min-height: 0;
+        grid-template-rows:
+            316px
+            42px
+            56px
+            minmax(0, 1fr);
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    body.contact-body .contact-page__main {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    body.contact-body .contact-section {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    body.contact-body .contact-section__inner {
+        display: grid;
+        width: min(1180px, calc(100% - 64px));
+        height: 100%;
+        min-height: 0;
+        grid-template-rows:
+            auto
+            minmax(0, 1fr);
+        margin: 0 auto;
+        padding: 7px 0 10px;
+        overflow: hidden;
+    }
+
+    body.contact-body .contact-section__header {
+        margin: 0;
+        padding: 0;
+    }
+
+    body.contact-body .contact-section__heading {
+        margin: 0 0 7px;
+        padding: 0;
+        font-size: 31px;
+        line-height: 1;
+    }
+
+    body.contact-body .contact-section__heading::after {
+        margin-top: 6px;
+    }
+
+    body.contact-body .contact-layout {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        grid-template-columns:
+            minmax(300px, 0.8fr)
+            minmax(0, 1.5fr);
+        gap: 24px;
+        align-items: stretch;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    body.contact-body .contact-introduction {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+        padding: 24px 28px;
+        overflow: hidden;
+    }
+
+    body.contact-body .contact-introduction__label {
+        margin: 0 0 8px;
+        font-size: 17px;
+        line-height: 1;
+    }
+
+    body.contact-body .contact-introduction__title {
+        margin: 0 0 12px;
+        font-size: clamp(36px, 3.1vw, 46px);
+        line-height: 0.94;
+    }
+
+    body.contact-body .contact-introduction__description {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.58;
+    }
+
+    body.contact-body .contact-details {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        grid-template-rows:
+            repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    body.contact-body .contact-card {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+        padding: 14px 22px;
+        overflow: hidden;
+    }
+
+    body.contact-body .contact-card__number {
+        margin: 0 0 3px;
+        font-size: 13px;
+        line-height: 1;
+    }
+
+    body.contact-body .contact-card__label {
+        margin: 0 0 5px;
+        font-size: 24px;
+        line-height: 1;
+    }
+
+    body.contact-body .contact-card__value {
+        max-width: 100%;
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+    }
+}
+
+
+/* Short laptop screens */
+
+@media (min-width: 761px) and (max-height: 760px) {
+
+    body.contact-body .contact-page {
+        grid-template-rows:
+            260px
+            38px
+            50px
+            minmax(0, 1fr);
+    }
+
+    body.contact-body .contact-section__inner {
+        padding-top: 5px;
+        padding-bottom: 7px;
+    }
+
+    body.contact-body .contact-section__heading {
+        margin-bottom: 5px;
+        font-size: 26px;
+    }
+
+    body.contact-body .contact-layout {
+        grid-template-columns:
+            minmax(270px, 0.75fr)
+            minmax(0, 1.5fr);
+        gap: 18px;
+    }
+
+    body.contact-body .contact-introduction {
+        padding: 18px 22px;
+    }
+
+    body.contact-body .contact-introduction__label {
+        margin-bottom: 6px;
+        font-size: 15px;
+    }
+
+    body.contact-body .contact-introduction__title {
+        margin-bottom: 9px;
+        font-size: 34px;
+    }
+
+    body.contact-body .contact-introduction__description {
+        font-size: 13px;
+        line-height: 1.48;
+    }
+
+    body.contact-body .contact-details {
+        gap: 8px;
+    }
+
+    body.contact-body .contact-card {
+        padding: 10px 18px;
+    }
+
+    body.contact-body .contact-card__number {
+        margin-bottom: 2px;
+        font-size: 12px;
+    }
+
+    body.contact-body .contact-card__label {
+        margin-bottom: 4px;
+        font-size: 21px;
+    }
+
+    body.contact-body .contact-card__value {
+        font-size: 14px;
+    }
+}
+
+
+/* Narrow desktop and tablet landscape */
+
+@media (min-width: 761px) and (max-width: 980px) {
+
+    body.contact-body .contact-section__inner {
+        width: calc(100% - 40px);
+    }
+
+    body.contact-body .contact-layout {
+        grid-template-columns:
+            minmax(260px, 0.75fr)
+            minmax(0, 1.35fr);
+        gap: 16px;
+    }
+
+    body.contact-body .contact-introduction {
+        padding: 18px 20px;
+    }
+
+    body.contact-body .contact-introduction__title {
+        font-size: 34px;
+    }
+
+    body.contact-body .contact-introduction__description {
+        font-size: 13px;
+    }
+
+    body.contact-body .contact-card {
+        padding: 11px 16px;
+    }
+
+    body.contact-body .contact-card__label {
+        font-size: 21px;
+    }
+
+    body.contact-body .contact-card__value {
+        font-size: 13px;
+    }
+}
+
+
+/* Mobile remains scrollable */
+
+@media (max-width: 760px) {
+
+    html,
+    body.contact-body {
+        height: auto;
+        min-height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    body.contact-body .contact-page {
+        display: flex;
+        height: auto;
+        min-height: 100vh;
+        flex-direction: column;
+        overflow: visible;
+    }
+
+    body.contact-body .contact-page__main,
+    body.contact-body .contact-section,
+    body.contact-body .contact-section__inner,
+    body.contact-body .contact-layout,
+    body.contact-body .contact-introduction,
+    body.contact-body .contact-details,
+    body.contact-body .contact-card {
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+    }
+}
+
+/* CONTACT ONE SCREEN FIX END */
+
+
+/* CONTACT CARD ICONS START */
+
+.contact-card__icon {
+    display: flex;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 9px;
+    color: #747573;
+}
+
+.contact-card__icon svg {
+    display: block;
+    width: 34px;
+    height: 34px;
+    fill: currentColor;
+}
+
+.contact-card:hover .contact-card__icon {
+    color: var(--accent);
+}
+
+@media (min-width: 761px) and (max-height: 760px) {
+    .contact-card__icon {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 5px;
+    }
+
+    .contact-card__icon svg {
+        width: 27px;
+        height: 27px;
+    }
+}
+
+@media (max-width: 760px) {
+    .contact-card__icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 8px;
+    }
+
+    .contact-card__icon svg {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* CONTACT CARD ICONS END */

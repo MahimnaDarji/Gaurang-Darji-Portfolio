@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Explore columns written by Gaurang Darji, including Kahevato nu Postmortem and Oxygen."
+    >
+
+    <title>Gaurang Darji | Columns</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;1,600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="columns.css">
+
+    <script src="script.js" defer></script>
+</head>
+
+<body class="columns-body">
+    <div class="site-shell columns-page">
+        <header class="hero">
+            <div class="hero__texture" aria-hidden="true"></div>
+
+            <div class="hero__content">
+                <div class="hero__identity">
+                    <h1 class="hero__name">
+                        <span class="hero__first-name">GAURANG</span>
+                        <span class="hero__last-name">DARJI</span>
+                    </h1>
+
+                    <p class="hero__role">
+                        Author - Columnist - Coach
+                    </p>
+                </div>
+
+                <div class="hero__portrait-wrapper">
+                    <img
+                        class="hero__portrait"
+                        src="Assets/DP2.png"
+                        alt="Gaurang Darji"
+                    >
+                </div>
+            </div>
+        </header>
+
+        <nav class="main-navigation" aria-label="Primary navigation">
+            <div class="main-navigation__inner">
+                <button
+                    class="mobile-navigation-button"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="primary-navigation-list"
+                >
+                    <span>Menu</span>
+
+                    <span
+                        class="mobile-navigation-button__icon"
+                        aria-hidden="true"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </button>
+
+                <ul
+                    class="main-navigation__list"
+                    id="primary-navigation-list"
+                >
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="aboutme.html">
+                            About Me
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="books.html">
+                            Books
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            class="is-active"
+                            href="columns.html"
+                            aria-current="page"
+                        >
+                            Columns
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="profession.html">
+                            Profession
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="coaching.html">
+                            Coaching
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">
+                            Contact Me
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="columns-page__main">
+            <section
+                class="columns-section"
+                aria-labelledby="columns-page-title"
+            >
+                <div
+                    class="columns-section__texture"
+                    aria-hidden="true"
+                ></div>
+
+                <div class="columns-section__inner">
+                    <header class="columns-section__header">
+                        <h2
+                            class="columns-section__heading"
+                            id="columns-page-title"
+                        >
+                            Columns
+                        </h2>
+                    </header>
+
+                    <div class="columns-grid">
+                        <article class="column-card">
+                            <div class="column-card__collage">
+                                <img
+                                    class="column-card__collage-image"
+                                    src="Assets/Kahevat collage.jpg"
+                                    alt="Kahevato nu Postmortem photo collage"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+
+                                <div
+                                    class="column-card__collage-fallback"
+                                    aria-hidden="true"
+                                >
+                                    <span>Photo Collage</span>
+                                </div>
+                            </div>
+
+                            <div class="column-card__content">
+                                <p class="column-card__number">
+                                    01
+                                </p>
+
+                                <h3 class="column-card__title">
+                                    Kahevato nu Postmortem
+                                </h3>
+                            </div>
+                        </article>
+
+                        <article class="column-card">
+                            <div class="column-card__collage">
+                                <img
+                                    class="column-card__collage-image"
+                                    src="Assets/Oxygen collage.jpg"
+                                    alt="Oxygen photo collage"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+
+                                <div
+                                    class="column-card__collage-fallback"
+                                    aria-hidden="true"
+                                >
+                                    <span>Photo Collage</span>
+                                </div>
+                            </div>
+
+                            <div class="column-card__content">
+                                <p class="column-card__number">
+                                    02
+                                </p>
+
+                                <h3 class="column-card__title">
+                                    Oxygen
+                                </h3>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.querySelectorAll(".column-card__collage-image").forEach(
+            function (image) {
+                image.addEventListener("load", function () {
+                    image.parentElement.classList.add("has-image");
+                });
+
+                image.addEventListener("error", function () {
+                    image.style.display = "none";
+                    image.parentElement.classList.remove("has-image");
+                });
+
+                if (image.complete && image.naturalWidth > 0) {
+                    image.parentElement.classList.add("has-image");
+                }
+            }
+        );
+    </script>
+</body>
+</html>

@@ -1,0 +1,2613 @@
+/* ============================================================
+   GAURANG DARJI PORTFOLIO
+   COACHING PAGE
+   PART 1 OF 4
+
+   Foundation, page shell, hero and introduction strip
+============================================================ */
+
+
+/* ============================================================
+   DESIGN TOKENS
+============================================================ */
+
+:root {
+    --page-background: #d8d8d5;
+
+    --hero-background: #3d3d3d;
+    --hero-background-deep: #353535;
+
+    --strip-background: #606060;
+
+    --navigation-background: #22282c;
+    --navigation-background-light: #293035;
+
+    --content-background: #efeeeb;
+    --content-background-secondary: #e9e8e4;
+
+    --white: #ffffff;
+    --soft-white: #f3f3f1;
+
+    --text-dark: #181818;
+    --text-medium: #6f706f;
+    --text-muted: #999894;
+
+    --accent: #f3aa2c;
+    --accent-hover: #ffc04a;
+
+    --site-max-width: 1552px;
+    --content-width: 1180px;
+
+    --display-font:
+        "Barlow Condensed",
+        "Arial Narrow",
+        Impact,
+        sans-serif;
+
+    --body-font:
+        "Libre Franklin",
+        Helvetica,
+        Arial,
+        sans-serif;
+}
+
+
+/* ============================================================
+   RESET AND DOCUMENT FOUNDATION
+============================================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    min-width: 320px;
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-width: 320px;
+    min-height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: var(--page-background);
+    color: var(--text-dark);
+    font-family: var(--body-font);
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body.navigation-open {
+    overflow: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+figure {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ============================================================
+   COACHING PAGE SHELL
+
+   Header dimensions match the other portfolio pages:
+   Hero: 316px
+   Quote strip: 42px
+   Navigation: 56px
+
+   The page remains scrollable because it contains six images.
+============================================================ */
+
+.coaching-page {
+    position: relative;
+    display: grid;
+    width: min(100%, var(--site-max-width));
+    min-height: 100vh;
+    grid-template-rows:
+        316px
+        42px
+        56px
+        auto;
+    margin: 0 auto;
+    overflow: visible;
+    background: var(--content-background);
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.08),
+        0 0 2px rgba(0, 0, 0, 0.18);
+}
+
+.coaching-page > .hero {
+    grid-row: 1;
+}
+
+.coaching-page > .intro-strip {
+    grid-row: 2;
+}
+
+.coaching-page > .main-navigation {
+    grid-row: 3;
+}
+
+.coaching-page > .coaching-page__main {
+    grid-row: 4;
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 316px;
+    min-height: 316px;
+    max-height: 316px;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            90deg,
+            var(--hero-background) 0%,
+            var(--hero-background) 58%,
+            var(--hero-background-deep) 100%
+        );
+}
+
+
+/* ============================================================
+   HERO TEXTURE
+============================================================ */
+
+.hero__texture {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.75;
+    background:
+        radial-gradient(
+            circle at 4px 4px,
+            rgba(210, 210, 207, 0.62) 0 1.5px,
+            transparent 1.7px
+        )
+        0 0 / 11px 11px,
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(205, 205, 201, 0.42) 0,
+            rgba(205, 205, 201, 0.16) 26%,
+            transparent 58%
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(166, 168, 164, 0.72) 0,
+            rgba(116, 117, 114, 0.42) 10%,
+            rgba(61, 61, 61, 0.10) 30%,
+            transparent 48%
+        );
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            #000 0,
+            #000 18%,
+            rgba(0, 0, 0, 0.40) 36%,
+            transparent 58%
+        );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            #000 0,
+            #000 18%,
+            rgba(0, 0, 0, 0.40) 36%,
+            transparent 58%
+        );
+}
+
+.hero__texture::before,
+.hero__texture::after {
+    position: absolute;
+    content: "";
+    pointer-events: none;
+}
+
+.hero__texture::before {
+    top: 0;
+    left: -4%;
+    width: 108%;
+    height: 140px;
+    opacity: 0.55;
+    background:
+        repeating-radial-gradient(
+            circle at 50% -50%,
+            rgba(233, 233, 230, 0.68) 0 2px,
+            transparent 2px 9px
+        );
+    transform: scaleY(0.65);
+    transform-origin: top;
+}
+
+.hero__texture::after {
+    top: 4px;
+    right: 2%;
+    width: 35%;
+    height: 125px;
+    opacity: 0.5;
+    background:
+        radial-gradient(
+            circle,
+            rgba(227, 227, 224, 0.70) 0 3px,
+            transparent 3.5px
+        )
+        0 0 / 18px 18px;
+    transform: skewX(-12deg);
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            #000,
+            rgba(0, 0, 0, 0.65) 50%,
+            transparent
+        );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            #000,
+            rgba(0, 0, 0, 0.65) 50%,
+            transparent
+        );
+}
+
+
+/* ============================================================
+   HERO CONTENT
+============================================================ */
+
+.hero__content {
+    position: relative;
+    z-index: 2;
+    width: min(var(--content-width), calc(100% - 64px));
+    height: 100%;
+    margin: 0 auto;
+}
+
+
+/* ============================================================
+   HERO IDENTITY
+============================================================ */
+
+.hero__identity {
+    position: absolute;
+    z-index: 3;
+    bottom: 26px;
+    left: 0;
+}
+
+.hero__name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+    font-family: var(--display-font);
+    font-weight: 600;
+    line-height: 0.75;
+    letter-spacing: -2.4px;
+    text-transform: uppercase;
+}
+
+.hero__first-name {
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin: 0;
+    color: var(--white);
+    font-size: clamp(62px, 5.2vw, 73px);
+    font-weight: 600;
+    line-height: 0.82;
+}
+
+.hero__last-name {
+    display: block;
+    margin: 0;
+    color: var(--accent);
+    font-size: clamp(82px, 7vw, 96px);
+    font-weight: 500;
+    line-height: 0.76;
+}
+
+.hero__role {
+    margin: 13px 0 0 2px;
+    color: var(--soft-white);
+    font-family: var(--body-font);
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.1px;
+}
+
+
+/* ============================================================
+   HERO PORTRAIT
+============================================================ */
+
+.hero__portrait-wrapper {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 312px;
+    height: 308px;
+    isolation: isolate;
+}
+
+.hero__portrait-wrapper::before {
+    position: absolute;
+    z-index: -1;
+    right: 4%;
+    bottom: 0;
+    width: 88%;
+    height: 88%;
+    content: "";
+    pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(255, 255, 255, 0.09) 0%,
+            rgba(255, 255, 255, 0.035) 48%,
+            transparent 72%
+        );
+}
+
+.hero__portrait {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    opacity: 1;
+    filter:
+        grayscale(0.28)
+        contrast(1.08)
+        brightness(1.08)
+        saturate(0.82);
+}
+
+
+/* ============================================================
+   INTRODUCTION STRIP
+============================================================ */
+
+.intro-strip {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    width: 100%;
+    height: 42px;
+    min-height: 42px;
+    max-height: 42px;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 5px 24px;
+    overflow: hidden;
+    background: var(--strip-background);
+    color: #d1d1cf;
+    text-align: center;
+}
+
+.intro-strip p {
+    margin: 0;
+    color: #d1d1cf;
+    font-family: var(--body-font);
+    font-size: clamp(14px, 1.1vw, 16px);
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.2px;
+}
+
+.intro-strip__quote {
+    display: inline-block;
+}
+
+
+/* ============================================================
+   DESKTOP SCROLLING
+============================================================ */
+
+@media (min-width: 761px) {
+    html,
+    body {
+        height: auto;
+        min-height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .coaching-page {
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+}
+
+
+/* ============================================================
+   SHORT LAPTOP SCREENS
+============================================================ */
+
+@media (min-width: 761px) and (max-height: 760px) {
+    .coaching-page {
+        grid-template-rows:
+            260px
+            38px
+            50px
+            auto;
+    }
+
+    .hero {
+        height: 260px;
+        min-height: 260px;
+        max-height: 260px;
+    }
+
+    .hero__content {
+        width: min(var(--content-width), calc(100% - 56px));
+    }
+
+    .hero__identity {
+        bottom: 20px;
+    }
+
+    .hero__first-name {
+        font-size: 57px;
+    }
+
+    .hero__last-name {
+        font-size: 75px;
+    }
+
+    .hero__role {
+        margin-top: 8px;
+        font-size: 14px;
+    }
+
+    .hero__portrait-wrapper {
+        width: 255px;
+        height: 255px;
+    }
+
+    .intro-strip {
+        height: 38px;
+        min-height: 38px;
+        max-height: 38px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+    .intro-strip p {
+        font-size: 13px;
+    }
+}
+
+
+/* ============================================================
+   TABLET HERO
+============================================================ */
+
+@media (max-width: 980px) and (min-width: 761px) {
+    .hero__content {
+        width: calc(100% - 48px);
+    }
+
+    .hero__first-name {
+        font-size: 60px;
+    }
+
+    .hero__last-name {
+        font-size: 80px;
+    }
+
+    .hero__portrait-wrapper {
+        width: 285px;
+        height: 300px;
+    }
+}
+
+
+/* ============================================================
+   MOBILE FOUNDATION AND HERO
+============================================================ */
+
+@media (max-width: 760px) {
+    html,
+    body {
+        height: auto;
+        min-height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .coaching-page {
+        display: flex;
+        height: auto;
+        min-height: 100vh;
+        flex-direction: column;
+        overflow: visible;
+    }
+
+    .hero {
+        order: 1;
+        height: 500px;
+        min-height: 500px;
+        max-height: 500px;
+    }
+
+    .intro-strip {
+        order: 2;
+        height: auto;
+        min-height: 58px;
+        max-height: none;
+        padding: 10px 20px;
+    }
+
+    .intro-strip p {
+        max-width: 520px;
+        font-size: 15px;
+        line-height: 1.45;
+    }
+
+    .main-navigation {
+        order: 3;
+    }
+
+    .coaching-page__main {
+        order: 4;
+    }
+
+    .hero__content {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero__identity {
+        top: 34px;
+        right: 20px;
+        bottom: auto;
+        left: 20px;
+        text-align: center;
+    }
+
+    .hero__name {
+        align-items: center;
+        line-height: 0.8;
+        letter-spacing: -2px;
+    }
+
+    .hero__first-name {
+        font-size: 49px;
+    }
+
+    .hero__last-name {
+        font-size: 72px;
+    }
+
+    .hero__role {
+        margin: 16px 0 0;
+        font-size: 17px;
+        text-align: center;
+    }
+
+    .hero__portrait-wrapper {
+        right: 50%;
+        bottom: 0;
+        width: 390px;
+        height: 360px;
+        transform: translateX(50%);
+    }
+}
+
+
+/* ============================================================
+   SMALL MOBILE HERO
+============================================================ */
+
+@media (max-width: 480px) {
+    .hero {
+        height: 445px;
+        min-height: 445px;
+        max-height: 445px;
+    }
+
+    .hero__identity {
+        top: 28px;
+    }
+
+    .hero__first-name {
+        font-size: 42px;
+    }
+
+    .hero__last-name {
+        font-size: 62px;
+    }
+
+    .hero__role {
+        margin-top: 12px;
+        font-size: 15px;
+    }
+
+    .hero__portrait-wrapper {
+        width: 330px;
+        height: 315px;
+    }
+
+    .intro-strip {
+        min-height: 54px;
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    .intro-strip p {
+        font-size: 13px;
+    }
+}
+
+/* ============================================================
+   GAURANG DARJI PORTFOLIO
+   COACHING PAGE
+   PART 2 OF 4
+
+   Navigation, section heading and coaching event cards
+============================================================ */
+
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+
+.main-navigation {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 56px;
+    min-height: 56px;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            90deg,
+            var(--navigation-background) 0%,
+            var(--navigation-background-light) 50%,
+            var(--navigation-background) 100%
+        );
+}
+
+.main-navigation::before,
+.main-navigation::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+}
+
+.main-navigation::before {
+    opacity: 0.16;
+    background:
+        radial-gradient(
+            circle at 3px 3px,
+            rgba(255, 255, 255, 0.25) 0 1px,
+            transparent 1.2px
+        )
+        0 0 / 8px 8px;
+}
+
+.main-navigation::after {
+    opacity: 0.18;
+    background:
+        linear-gradient(
+            115deg,
+            transparent 0 34%,
+            rgba(255, 255, 255, 0.08) 34.2% 34.5%,
+            transparent 34.7% 66%,
+            rgba(255, 255, 255, 0.06) 66.2% 66.5%,
+            transparent 66.7%
+        );
+}
+
+.main-navigation__inner {
+    position: relative;
+    z-index: 2;
+    width: min(1100px, calc(100% - 48px));
+    height: 56px;
+    min-height: 56px;
+    margin: 0 auto;
+}
+
+.main-navigation__list {
+    display: flex;
+    width: 100%;
+    height: 56px;
+    min-height: 56px;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin: 0;
+    padding: 0 16px;
+    list-style: none;
+}
+
+.main-navigation__list li {
+    display: block;
+    height: 56px;
+    min-height: 56px;
+}
+
+.main-navigation__list a {
+    position: relative;
+    display: inline-flex;
+    height: 56px;
+    min-height: 56px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: var(--accent);
+    font-family: var(--display-font);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+        color 160ms ease,
+        transform 160ms ease;
+}
+
+.main-navigation__list a::after {
+    position: absolute;
+    right: 0;
+    bottom: 9px;
+    left: 0;
+    height: 2px;
+    content: "";
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 160ms ease;
+}
+
+.main-navigation__list a:hover,
+.main-navigation__list a:focus-visible,
+.main-navigation__list a.is-active {
+    color: var(--accent-hover);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+.main-navigation__list a:hover::after,
+.main-navigation__list a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+.main-navigation__list a.is-active::after {
+    display: none;
+}
+
+.mobile-navigation-button {
+    display: none;
+}
+
+
+/* ============================================================
+   COACHING MAIN
+============================================================ */
+
+.coaching-page__main {
+    width: 100%;
+    min-height: 0;
+    background:
+        linear-gradient(
+            180deg,
+            var(--content-background) 0%,
+            var(--content-background-secondary) 100%
+        );
+}
+
+
+/* ============================================================
+   COACHING SECTION
+============================================================ */
+
+.coaching-section {
+    position: relative;
+    width: 100%;
+    min-height: 0;
+    overflow: hidden;
+    padding: 10px 0 60px;
+}
+
+.coaching-section__texture {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    background:
+        radial-gradient(
+            circle at 5px 5px,
+            rgba(90, 90, 90, 0.15) 0 1px,
+            transparent 1.2px
+        )
+        0 0 / 10px 10px;
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            #000 0%,
+            rgba(0, 0, 0, 0.68) 68%,
+            transparent 100%
+        );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            #000 0%,
+            rgba(0, 0, 0, 0.68) 68%,
+            transparent 100%
+        );
+}
+
+.coaching-section__inner {
+    position: relative;
+    z-index: 2;
+    width: min(var(--content-width), calc(100% - 64px));
+    margin: 0 auto;
+}
+
+
+/* ============================================================
+   PAGE HEADING
+============================================================ */
+
+.coaching-section__header {
+    margin: 0;
+    padding: 0;
+}
+
+.coaching-section__heading {
+    margin: 0 0 7px;
+    color: #111111;
+    font-family: var(--display-font);
+    font-size: 31px;
+    font-weight: 800;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.coaching-section__heading::after {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin-top: 6px;
+    content: "";
+    background: rgba(0, 0, 0, 0.12);
+}
+
+
+/* ============================================================
+   COACHING EVENTS
+============================================================ */
+
+.coaching-events {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin-top: 18px;
+}
+
+
+/* ============================================================
+   COACHING EVENT CARD
+============================================================ */
+
+.coaching-event {
+    position: relative;
+    display: grid;
+    grid-template-columns:
+        300px
+        minmax(0, 1fr);
+    gap: 22px;
+    align-items: stretch;
+    overflow: hidden;
+    padding: 22px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.86),
+            rgba(232, 231, 227, 0.95)
+        );
+    box-shadow:
+        0 10px 26px rgba(0, 0, 0, 0.05);
+}
+
+.coaching-event::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    content: "";
+    background: var(--accent);
+}
+
+
+/* ============================================================
+   EVENT INFORMATION
+============================================================ */
+
+.coaching-event__information {
+    display: grid;
+    grid-template-columns:
+        58px
+        minmax(0, 1fr);
+    gap: 18px;
+    align-items: center;
+    min-width: 0;
+    padding-right: 8px;
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.coaching-event__number {
+    margin: 0;
+    color: var(--accent);
+    font-family: var(--display-font);
+    font-size: 54px;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+}
+
+.coaching-event__details {
+    min-width: 0;
+}
+
+.coaching-event__title {
+    margin: 0;
+    color: #2e2e2e;
+    font-family: var(--display-font);
+    font-size: clamp(28px, 2.6vw, 38px);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.7px;
+    text-transform: uppercase;
+}
+
+.coaching-event__subtitle {
+    margin: 8px 0 0;
+    color: #6f706f;
+    font-family: var(--body-font);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+
+/* ============================================================
+   EVENT LOCATION
+============================================================ */
+
+.coaching-event__location {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.coaching-event__location-icon {
+    display: inline-flex;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    color: var(--accent);
+}
+
+.coaching-event__location-icon svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+.coaching-event__location p {
+    margin: 0;
+    color: #444444;
+    font-family: var(--body-font);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   EVENT GALLERY
+============================================================ */
+
+.coaching-event__gallery {
+    display: grid;
+    min-width: 0;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.coaching-event__image {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            145deg,
+            #d8d6d1,
+            #ebe9e4
+        );
+}
+
+.coaching-event__image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* ============================================================
+   SHORT LAPTOP SCREENS
+============================================================ */
+
+@media (min-width: 761px) and (max-height: 760px) {
+    .main-navigation,
+    .main-navigation__inner,
+    .main-navigation__list,
+    .main-navigation__list li,
+    .main-navigation__list a {
+        height: 50px;
+        min-height: 50px;
+    }
+
+    .main-navigation__list {
+        gap: 24px;
+    }
+
+    .main-navigation__list a {
+        font-size: 15px;
+    }
+
+    .main-navigation__list a::after {
+        bottom: 8px;
+    }
+
+    .coaching-section {
+        padding-top: 8px;
+        padding-bottom: 48px;
+    }
+
+    .coaching-section__heading {
+        font-size: 28px;
+    }
+
+    .coaching-events {
+        gap: 18px;
+        margin-top: 15px;
+    }
+
+    .coaching-event {
+        grid-template-columns:
+            270px
+            minmax(0, 1fr);
+        gap: 18px;
+        padding: 18px;
+    }
+
+    .coaching-event__information {
+        grid-template-columns:
+            50px
+            minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .coaching-event__number {
+        font-size: 46px;
+    }
+
+    .coaching-event__title {
+        font-size: 29px;
+    }
+
+    .coaching-event__subtitle {
+        margin-top: 6px;
+        font-size: 13px;
+    }
+
+    .coaching-event__location {
+        margin-top: 13px;
+    }
+
+    .coaching-event__location p {
+        font-size: 12px;
+    }
+
+    .coaching-event__gallery {
+        gap: 8px;
+    }
+}
+
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (max-width: 980px) and (min-width: 761px) {
+    .main-navigation__inner {
+        width: calc(100% - 32px);
+    }
+
+    .main-navigation__list {
+        gap: 19px;
+    }
+
+    .main-navigation__list a {
+        font-size: 15px;
+    }
+
+    .coaching-section__inner {
+        width: calc(100% - 48px);
+    }
+
+    .coaching-event {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .coaching-event__information {
+        padding-right: 0;
+        padding-bottom: 18px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+}
+
+
+/* ============================================================
+   MOBILE NAVIGATION AND CONTENT
+============================================================ */
+
+@media (max-width: 760px) {
+    .main-navigation {
+        height: auto;
+        min-height: 66px;
+        overflow: visible;
+    }
+
+    .main-navigation__inner {
+        width: 100%;
+        height: auto;
+        min-height: 66px;
+    }
+
+    .mobile-navigation-button {
+        position: relative;
+        z-index: 3;
+        display: flex;
+        width: 100%;
+        min-height: 66px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
+        border: 0;
+        background: transparent;
+        color: var(--accent);
+        cursor: pointer;
+        font-family: var(--display-font);
+        font-size: 23px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .mobile-navigation-button__icon {
+        display: flex;
+        width: 26px;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .mobile-navigation-button__icon span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: currentColor;
+        transition:
+            transform 180ms ease,
+            opacity 180ms ease;
+    }
+
+    .mobile-navigation-button[aria-expanded="true"]
+        .mobile-navigation-button__icon
+        span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .mobile-navigation-button[aria-expanded="true"]
+        .mobile-navigation-button__icon
+        span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-navigation-button[aria-expanded="true"]
+        .mobile-navigation-button__icon
+        span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .main-navigation__list {
+        position: absolute;
+        top: 66px;
+        right: 0;
+        left: 0;
+        display: grid;
+        width: 100%;
+        height: auto;
+        max-height: 0;
+        min-height: 0;
+        grid-template-columns: 1fr;
+        gap: 0;
+        overflow: hidden;
+        padding: 0;
+        background: var(--navigation-background);
+        opacity: 0;
+        visibility: hidden;
+        transition:
+            max-height 220ms ease,
+            opacity 180ms ease,
+            visibility 180ms ease;
+    }
+
+    .main-navigation__list.is-open {
+        max-height: calc(100vh - 66px);
+        overflow-y: auto;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .main-navigation__list li {
+        height: auto;
+        min-height: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .main-navigation__list a {
+        display: flex;
+        width: 100%;
+        height: auto;
+        min-height: 55px;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 20px;
+        font-size: 22px;
+    }
+
+    .main-navigation__list a::after {
+        display: none;
+    }
+
+    .coaching-section {
+        padding: 18px 0 40px;
+    }
+
+    .coaching-section__inner {
+        width: min(620px, calc(100% - 32px));
+    }
+
+    .coaching-section__heading {
+        font-size: 36px;
+    }
+
+    .coaching-events {
+        gap: 22px;
+        margin-top: 18px;
+    }
+
+    .coaching-event {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 18px;
+    }
+
+    .coaching-event__information {
+        grid-template-columns:
+            48px
+            minmax(0, 1fr);
+        gap: 14px;
+        padding-right: 0;
+        padding-bottom: 18px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .coaching-event__number {
+        font-size: 44px;
+    }
+
+    .coaching-event__title {
+        font-size: 31px;
+    }
+
+    .coaching-event__subtitle {
+        font-size: 14px;
+    }
+
+    .coaching-event__location p {
+        font-size: 13px;
+    }
+
+    .coaching-event__gallery {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .coaching-event__image {
+        aspect-ratio: 16 / 10;
+    }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+============================================================ */
+
+@media (max-width: 480px) {
+    .mobile-navigation-button {
+        padding-right: 18px;
+        padding-left: 18px;
+        font-size: 21px;
+    }
+
+    .coaching-section {
+        padding-top: 16px;
+        padding-bottom: 34px;
+    }
+
+    .coaching-section__inner {
+        width: calc(100% - 24px);
+    }
+
+    .coaching-section__heading {
+        font-size: 32px;
+    }
+
+    .coaching-event {
+        padding: 16px;
+    }
+
+    .coaching-event__information {
+        grid-template-columns:
+            42px
+            minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .coaching-event__number {
+        font-size: 38px;
+    }
+
+    .coaching-event__title {
+        font-size: 28px;
+    }
+
+    .coaching-event__subtitle {
+        font-size: 13px;
+    }
+
+    .coaching-event__location {
+        gap: 8px;
+        margin-top: 14px;
+    }
+
+    .coaching-event__location p {
+        font-size: 12px;
+    }
+}
+
+/* ============================================================
+   GAURANG DARJI PORTFOLIO
+   COACHING PAGE
+   PART 3 OF 4
+
+   Responsive scaling, gallery consistency and layout safeguards
+============================================================ */
+
+
+/* ============================================================
+   LARGE DESKTOP
+============================================================ */
+
+@media (min-width: 1301px) {
+    .hero__content,
+    .coaching-section__inner {
+        width: min(var(--content-width), calc(100% - 80px));
+    }
+
+    .coaching-event {
+        grid-template-columns:
+            320px
+            minmax(0, 1fr);
+        gap: 24px;
+        padding: 24px;
+    }
+
+    .coaching-event__information {
+        grid-template-columns:
+            62px
+            minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .coaching-event__number {
+        font-size: 58px;
+    }
+
+    .coaching-event__title {
+        font-size: 40px;
+    }
+
+    .coaching-event__gallery {
+        gap: 12px;
+    }
+}
+
+
+/* ============================================================
+   STANDARD DESKTOP AND LAPTOP WIDTHS
+============================================================ */
+
+@media (min-width: 981px) and (max-width: 1300px) {
+    .hero__content,
+    .coaching-section__inner {
+        width: min(1100px, calc(100% - 56px));
+    }
+
+    .hero__first-name {
+        font-size: clamp(62px, 5.2vw, 70px);
+    }
+
+    .hero__last-name {
+        font-size: clamp(82px, 7vw, 92px);
+    }
+
+    .hero__portrait-wrapper {
+        width: 295px;
+        height: 302px;
+    }
+
+    .main-navigation__inner {
+        width: min(1040px, calc(100% - 40px));
+    }
+
+    .main-navigation__list {
+        gap: 24px;
+    }
+
+    .main-navigation__list a {
+        font-size: 16px;
+    }
+
+    .coaching-event {
+        grid-template-columns:
+            285px
+            minmax(0, 1fr);
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .coaching-event__information {
+        grid-template-columns:
+            54px
+            minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .coaching-event__number {
+        font-size: 50px;
+    }
+
+    .coaching-event__title {
+        font-size: clamp(29px, 2.5vw, 36px);
+    }
+
+    .coaching-event__subtitle {
+        font-size: 13px;
+    }
+
+    .coaching-event__location p {
+        font-size: 12px;
+    }
+}
+
+
+/* ============================================================
+   MEDIUM DESKTOP WIDTHS
+============================================================ */
+
+@media (min-width: 901px) and (max-width: 1080px) {
+    .coaching-section__inner {
+        width: calc(100% - 48px);
+    }
+
+    .coaching-event {
+        grid-template-columns:
+            260px
+            minmax(0, 1fr);
+        gap: 18px;
+        padding: 18px;
+    }
+
+    .coaching-event__information {
+        grid-template-columns:
+            48px
+            minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .coaching-event__number {
+        font-size: 44px;
+    }
+
+    .coaching-event__title {
+        font-size: 29px;
+    }
+
+    .coaching-event__gallery {
+        gap: 8px;
+    }
+}
+
+
+/* ============================================================
+   IMAGE CONTAINMENT AND CONSISTENCY
+============================================================ */
+
+.coaching-event__gallery {
+    align-items: stretch;
+}
+
+.coaching-event__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    background: #e6e4df;
+}
+
+.coaching-event__image img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: center;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+/* ============================================================
+   CARD AND IMAGE HOVER
+============================================================ */
+
+.coaching-event {
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease;
+}
+
+.coaching-event:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0, 0, 0, 0.12);
+    box-shadow:
+        0 16px 36px rgba(0, 0, 0, 0.08);
+}
+
+.coaching-event__image img {
+    transition:
+        transform 220ms ease,
+        filter 220ms ease;
+}
+
+.coaching-event:hover .coaching-event__image img {
+    transform: scale(1.015);
+}
+
+
+/* ============================================================
+   LOCATION ICON SAFETY
+============================================================ */
+
+.coaching-event__location-icon {
+    flex-shrink: 0;
+}
+
+.coaching-event__location-icon svg {
+    pointer-events: none;
+}
+
+
+/* ============================================================
+   NARROW TABLET LANDSCAPE
+============================================================ */
+
+@media (min-width: 761px) and (max-width: 900px) {
+    .hero__content,
+    .coaching-section__inner {
+        width: calc(100% - 40px);
+    }
+
+    .hero__first-name {
+        font-size: 56px;
+    }
+
+    .hero__last-name {
+        font-size: 74px;
+    }
+
+    .hero__role {
+        font-size: 14px;
+    }
+
+    .hero__portrait-wrapper {
+        width: 265px;
+        height: 286px;
+    }
+
+    .main-navigation__inner {
+        width: calc(100% - 20px);
+    }
+
+    .main-navigation__list {
+        gap: 14px;
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+
+    .main-navigation__list a {
+        font-size: 14px;
+    }
+
+    .coaching-event {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 18px;
+    }
+
+    .coaching-event__information {
+        grid-template-columns:
+            48px
+            minmax(0, 1fr);
+        gap: 14px;
+        padding-right: 0;
+        padding-bottom: 16px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .coaching-event__gallery {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+        gap: 8px;
+    }
+}
+
+
+/* ============================================================
+   MOBILE LANDSCAPE
+============================================================ */
+
+@media (max-width: 760px) and (orientation: landscape) {
+    .hero {
+        height: 390px;
+        min-height: 390px;
+        max-height: 390px;
+    }
+
+    .hero__identity {
+        top: 24px;
+    }
+
+    .hero__first-name {
+        font-size: 40px;
+    }
+
+    .hero__last-name {
+        font-size: 58px;
+    }
+
+    .hero__role {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    .hero__portrait-wrapper {
+        width: 315px;
+        height: 285px;
+    }
+
+    .coaching-section {
+        padding-top: 18px;
+    }
+
+    .coaching-event__gallery {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+    .coaching-event__image {
+        aspect-ratio: 4 / 3;
+    }
+}
+
+
+/* ============================================================
+   EXTRA-SMALL MOBILE
+============================================================ */
+
+@media (max-width: 380px) {
+    .hero {
+        height: 420px;
+        min-height: 420px;
+        max-height: 420px;
+    }
+
+    .hero__identity {
+        top: 24px;
+        right: 12px;
+        left: 12px;
+    }
+
+    .hero__first-name {
+        font-size: 38px;
+    }
+
+    .hero__last-name {
+        font-size: 56px;
+    }
+
+    .hero__role {
+        font-size: 14px;
+    }
+
+    .hero__portrait-wrapper {
+        width: 300px;
+        height: 292px;
+    }
+
+    .intro-strip p {
+        font-size: 12px;
+    }
+
+    .coaching-section__heading {
+        font-size: 29px;
+    }
+
+    .coaching-event {
+        padding: 14px;
+    }
+
+    .coaching-event__information {
+        grid-template-columns:
+            38px
+            minmax(0, 1fr);
+        gap: 10px;
+    }
+
+    .coaching-event__number {
+        font-size: 34px;
+    }
+
+    .coaching-event__title {
+        font-size: 25px;
+    }
+
+    .coaching-event__subtitle {
+        font-size: 12px;
+    }
+
+    .coaching-event__location p {
+        font-size: 11px;
+    }
+}
+
+
+/* ============================================================
+   TEXT WRAPPING SAFETY
+============================================================ */
+
+.hero__name,
+.hero__role,
+.main-navigation__list a,
+.coaching-section__heading {
+    white-space: nowrap;
+}
+
+.coaching-event,
+.coaching-event__information,
+.coaching-event__details,
+.coaching-event__gallery,
+.coaching-event__image {
+    min-width: 0;
+}
+
+.coaching-event__title,
+.coaching-event__subtitle,
+.coaching-event__location p {
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
+
+/* ============================================================
+   FINAL LAYOUT SAFETY
+============================================================ */
+
+.coaching-page__main,
+.coaching-section,
+.coaching-section__inner,
+.coaching-events,
+.coaching-event,
+.coaching-event__information,
+.coaching-event__details,
+.coaching-event__gallery,
+.coaching-event__image {
+    min-width: 0;
+}
+
+@media (max-width: 760px) {
+    .coaching-page,
+    .coaching-page__main,
+    .coaching-section,
+    .coaching-section__inner,
+    .coaching-events,
+    .coaching-event,
+    .coaching-event__information,
+    .coaching-event__gallery {
+        overflow: visible;
+    }
+}
+
+/* ============================================================
+   GAURANG DARJI PORTFOLIO
+   COACHING PAGE
+   PART 4 OF 4
+
+   Motion, accessibility, print and final safeguards
+============================================================ */
+
+
+/* ============================================================
+   PAGE LOAD ANIMATIONS
+============================================================ */
+
+@keyframes coachingFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes coachingFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.hero__identity {
+    animation: coachingFadeUp 0.7s ease both;
+}
+
+.hero__portrait-wrapper {
+    animation: coachingFadeIn 0.9s ease both;
+}
+
+.intro-strip {
+    animation: coachingFadeIn 0.8s ease both;
+}
+
+.main-navigation {
+    animation: coachingFadeIn 0.8s ease both;
+}
+
+.coaching-section__heading {
+    animation: coachingFadeUp 0.7s ease 0.08s both;
+}
+
+.coaching-event {
+    animation: coachingFadeUp 0.72s ease both;
+}
+
+.coaching-event:nth-child(1) {
+    animation-delay: 0.16s;
+}
+
+.coaching-event:nth-child(2) {
+    animation-delay: 0.24s;
+}
+
+
+/* ============================================================
+   HERO POLISH
+============================================================ */
+
+.hero__portrait {
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+.hero__portrait:hover {
+    transform: translateY(-3px);
+    filter:
+        grayscale(0.15)
+        contrast(1.1)
+        brightness(1.1)
+        saturate(0.9);
+}
+
+
+/* ============================================================
+   IMAGE POLISH
+============================================================ */
+
+.coaching-event__image {
+    position: relative;
+}
+
+.coaching-event__image::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+    background:
+        linear-gradient(
+            180deg,
+            transparent 55%,
+            rgba(0, 0, 0, 0.08) 100%
+        );
+}
+
+.coaching-event__image img {
+    transition:
+        transform 0.24s ease,
+        filter 0.24s ease;
+}
+
+.coaching-event:hover .coaching-event__image img {
+    transform: scale(1.02);
+    filter: contrast(1.03);
+}
+
+
+/* ============================================================
+   FOCUS STATES
+============================================================ */
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+
+/* ============================================================
+   TEXT SELECTION
+============================================================ */
+
+::selection {
+    background: var(--accent);
+    color: #111111;
+}
+
+::-moz-selection {
+    background: var(--accent);
+    color: #111111;
+}
+
+
+/* ============================================================
+   SCROLLBAR
+============================================================ */
+
+.coaching-body::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.coaching-body::-webkit-scrollbar-track {
+    background: #d8d8d5;
+}
+
+.coaching-body::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: #8d8d8d;
+}
+
+.coaching-body::-webkit-scrollbar-thumb:hover {
+    background: #6f6f6f;
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* ============================================================
+   PRINT
+============================================================ */
+
+@media print {
+    body {
+        background: #ffffff;
+    }
+
+    .hero {
+        background: #555555;
+    }
+
+    .intro-strip,
+    .main-navigation {
+        display: none;
+    }
+
+    .coaching-page {
+        display: block;
+        width: 100%;
+        min-height: 0;
+        overflow: visible;
+        box-shadow: none;
+    }
+
+    .coaching-page__main,
+    .coaching-section,
+    .coaching-section__inner,
+    .coaching-events,
+    .coaching-event,
+    .coaching-event__information,
+    .coaching-event__gallery {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+    }
+
+    .coaching-event {
+        break-inside: avoid;
+        box-shadow: none;
+    }
+}
+
+
+/* ============================================================
+   UTILITY CLASSES
+============================================================ */
+
+.hidden {
+    display: none !important;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.no-scroll {
+    overflow: hidden !important;
+}
+
+
+/* ============================================================
+   FINAL HEADER CONSISTENCY
+============================================================ */
+
+@media (min-width: 761px) {
+    .coaching-page {
+        grid-template-rows:
+            316px
+            42px
+            56px
+            auto;
+    }
+
+    .hero {
+        height: 316px;
+        min-height: 316px;
+        max-height: 316px;
+    }
+
+    .intro-strip {
+        height: 42px;
+        min-height: 42px;
+        max-height: 42px;
+    }
+
+    .main-navigation,
+    .main-navigation__inner,
+    .main-navigation__list,
+    .main-navigation__list li,
+    .main-navigation__list a {
+        height: 56px;
+        min-height: 56px;
+        max-height: 56px;
+    }
+}
+
+
+/* ============================================================
+   FINAL SHORT-SCREEN CONSISTENCY
+============================================================ */
+
+@media (min-width: 761px) and (max-height: 760px) {
+    .coaching-page {
+        grid-template-rows:
+            260px
+            38px
+            50px
+            auto;
+    }
+
+    .hero {
+        height: 260px;
+        min-height: 260px;
+        max-height: 260px;
+    }
+
+    .intro-strip {
+        height: 38px;
+        min-height: 38px;
+        max-height: 38px;
+    }
+
+    .main-navigation,
+    .main-navigation__inner,
+    .main-navigation__list,
+    .main-navigation__list li,
+    .main-navigation__list a {
+        height: 50px;
+        min-height: 50px;
+        max-height: 50px;
+    }
+}
+
+
+/* ============================================================
+   FINAL MOBILE SAFETY
+============================================================ */
+
+@media (max-width: 760px) {
+    .coaching-page,
+    .coaching-page__main,
+    .coaching-section,
+    .coaching-section__inner,
+    .coaching-events,
+    .coaching-event,
+    .coaching-event__information,
+    .coaching-event__gallery,
+    .coaching-event__image {
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+    }
+
+    .coaching-page {
+        min-height: 100vh;
+    }
+}
+
+
+/* ============================================================
+   FINAL LAYOUT SAFETY
+============================================================ */
+
+.hero,
+.hero__content,
+.intro-strip,
+.main-navigation,
+.main-navigation__inner,
+.coaching-page__main,
+.coaching-section,
+.coaching-section__inner,
+.coaching-events,
+.coaching-event,
+.coaching-event__information,
+.coaching-event__details,
+.coaching-event__gallery,
+.coaching-event__image {
+    min-width: 0;
+}
+
+.coaching-event__title,
+.coaching-event__subtitle,
+.coaching-event__location p {
+    max-width: 100%;
+}
+
+
+/* ============================================================
+   END OF COACHING PAGE STYLES
+============================================================ */
+
+
+/* ============================================================
+   COACHING CARD SIZE AND COMPLETE IMAGE FIT
+============================================================ */
+
+@media (min-width: 981px) {
+
+    .coaching-event {
+        grid-template-columns:
+            352px
+            minmax(0, 1fr);
+        gap: 27px;
+        padding: 27px;
+    }
+
+    .coaching-event__information {
+        grid-template-columns:
+            68px
+            minmax(0, 1fr);
+        gap: 21px;
+    }
+
+    .coaching-event__number {
+        font-size: 65px;
+    }
+
+    .coaching-event__title {
+        font-size: 49px;
+        line-height: 0.95;
+    }
+
+    .coaching-event__subtitle {
+        margin-top: 11px;
+        font-size: 16px;
+    }
+
+    .coaching-event__location {
+        margin-top: 21px;
+    }
+
+    .coaching-event__location p {
+        font-size: 15px;
+        line-height: 1.55;
+    }
+
+    .coaching-event__gallery {
+        gap: 13px;
+    }
+}
+
+
+/* ============================================================
+   SHOW COMPLETE IMAGES WITHOUT CROPPING
+============================================================ */
+
+.coaching-event__image {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    aspect-ratio: 4 / 3;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #e6e4df;
+}
+
+.coaching-event__image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transform: none;
+}
+
+.coaching-event:hover .coaching-event__image img {
+    transform: none;
+    filter: none;
+}
+
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (min-width: 761px) and (max-width: 980px) {
+
+    .coaching-event {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 21px;
+    }
+
+    .coaching-event__information {
+        grid-template-columns:
+            58px
+            minmax(0, 1fr);
+        gap: 17px;
+    }
+
+    .coaching-event__number {
+        font-size: 54px;
+    }
+
+    .coaching-event__title {
+        font-size: 38px;
+    }
+
+    .coaching-event__subtitle {
+        font-size: 15px;
+    }
+
+    .coaching-event__gallery {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 760px) {
+
+    .coaching-event {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 20px;
+    }
+
+    .coaching-event__information {
+        grid-template-columns:
+            46px
+            minmax(0, 1fr);
+        gap: 13px;
+    }
+
+    .coaching-event__number {
+        font-size: 42px;
+    }
+
+    .coaching-event__title {
+        font-size: 34px;
+    }
+
+    .coaching-event__subtitle {
+        font-size: 14px;
+    }
+
+    .coaching-event__location p {
+        font-size: 13px;
+    }
+
+    .coaching-event__gallery {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .coaching-event__image {
+        aspect-ratio: 4 / 3;
+    }
+}
+
+
+/* COACHING IMAGE AND TITLE FIX START */
+
+
+/* ============================================================
+   DESKTOP CARD PROPORTIONS
+
+   Gives the event information enough width so that the word
+   COMMUNICATION stays on one line.
+============================================================ */
+
+@media (min-width: 981px) {
+
+    .coaching-event {
+        grid-template-columns:
+            420px
+            minmax(0, 1fr);
+        gap: 26px;
+        padding: 26px;
+    }
+
+    .coaching-event__information {
+        grid-template-columns:
+            68px
+            minmax(0, 1fr);
+        gap: 20px;
+        padding-right: 18px;
+    }
+
+    .coaching-event__title {
+        max-width: 100%;
+        font-size: clamp(42px, 3vw, 48px);
+        line-height: 0.98;
+        overflow-wrap: normal;
+        word-break: keep-all;
+        hyphens: none;
+    }
+
+    .coaching-event:nth-child(2) .coaching-event__title {
+        font-size: clamp(39px, 2.75vw, 45px);
+    }
+}
+
+
+/* ============================================================
+   COMPLETE IMAGE DISPLAY WITHOUT BLANK TOP OR BOTTOM SPACE
+
+   The image container now follows the actual image height.
+   This shows the complete photograph without cropping and
+   without forcing it into a mismatched fixed aspect ratio.
+============================================================ */
+
+.coaching-event__gallery {
+    align-items: start;
+}
+
+.coaching-event__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: auto;
+    overflow: hidden;
+    background: transparent;
+}
+
+.coaching-event__image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    object-fit: initial;
+    object-position: initial;
+    transform: none;
+}
+
+.coaching-event:hover .coaching-event__image img {
+    transform: none;
+    filter: none;
+}
+
+.coaching-event__image::after {
+    display: none;
+}
+
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (min-width: 761px) and (max-width: 980px) {
+
+    .coaching-event__title {
+        font-size: 37px;
+        overflow-wrap: normal;
+        word-break: keep-all;
+        hyphens: none;
+    }
+
+    .coaching-event:nth-child(2) .coaching-event__title {
+        font-size: 35px;
+    }
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 760px) {
+
+    .coaching-event__title {
+        font-size: 31px;
+        overflow-wrap: normal;
+        word-break: keep-all;
+        hyphens: none;
+    }
+
+    .coaching-event:nth-child(2) .coaching-event__title {
+        font-size: 29px;
+    }
+
+    .coaching-event__gallery {
+        align-items: start;
+    }
+
+    .coaching-event__image,
+    .coaching-event__image img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: auto;
+    }
+}
+
+
+/* COACHING IMAGE AND TITLE FIX END */
