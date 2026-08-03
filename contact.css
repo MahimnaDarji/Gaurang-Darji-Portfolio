@@ -2400,3 +2400,83 @@ button:focus-visible{
 }
 
 /* CONTACT CARD ICONS END */
+
+
+/* ANIMATED PHONE ICON START */
+
+.contact-card__icon--phone svg {
+    overflow: visible;
+    fill: none;
+    stroke: currentColor;
+}
+
+.contact-card__icon--phone .contact-phone-body,
+.contact-card__icon--phone .contact-phone-wave {
+    fill: none;
+    stroke: currentColor;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.contact-card__icon--phone .contact-phone-wave {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.contact-card:hover
+.contact-card__icon--phone
+.contact-phone-wave--inner,
+.contact-card:focus-within
+.contact-card__icon--phone
+.contact-phone-wave--inner {
+    animation: contactPhoneRing 0.8s ease-in-out;
+}
+
+.contact-card:hover
+.contact-card__icon--phone
+.contact-phone-wave--outer,
+.contact-card:focus-within
+.contact-card__icon--phone
+.contact-phone-wave--outer {
+    animation: contactPhoneRing 0.8s ease-in-out 0.2s;
+}
+
+@keyframes contactPhoneRing {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    25% {
+        opacity: 0;
+        transform: scale(0.45);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    75% {
+        opacity: 0;
+        transform: scale(0.45);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contact-card:hover
+    .contact-card__icon--phone
+    .contact-phone-wave,
+    .contact-card:focus-within
+    .contact-card__icon--phone
+    .contact-phone-wave {
+        animation: none;
+    }
+}
+
+/* ANIMATED PHONE ICON END */
