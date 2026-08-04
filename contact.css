@@ -2480,3 +2480,372 @@ button:focus-visible{
 }
 
 /* ANIMATED PHONE ICON END */
+
+
+/* CONTACT FOOTER FINAL FIX START */
+
+@media (min-width: 761px) {
+
+    html,
+    body.contact-body {
+        width: 100%;
+        height: 100%;
+        min-height: 100%;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    body.contact-body .contact-page {
+        display: grid;
+        width: min(100%, 1552px);
+        height: 100vh;
+        min-height: 0;
+        grid-template-rows:
+            316px
+            42px
+            56px
+            minmax(0, 1fr)
+            44px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    body.contact-body .contact-page > .hero {
+        grid-row: 1;
+    }
+
+    body.contact-body .contact-page > .intro-strip {
+        grid-row: 2;
+    }
+
+    body.contact-body .contact-page > .main-navigation {
+        grid-row: 3;
+    }
+
+    body.contact-body .contact-page > .contact-page__main {
+        grid-row: 4;
+    }
+
+    body.contact-body .contact-page > .site-footer {
+        grid-row: 5;
+    }
+
+    body.contact-body .contact-page__main {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    body.contact-body .contact-section {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    body.contact-body .contact-section__inner {
+        display: grid;
+        width: min(1180px, calc(100% - 64px));
+        height: 100%;
+        min-height: 0;
+        grid-template-rows:
+            46px
+            minmax(0, 1fr);
+        margin: 0 auto;
+        padding: 6px 0 10px;
+        overflow: hidden;
+    }
+
+    body.contact-body .contact-section__header {
+        margin: 0;
+        padding: 0;
+    }
+
+    body.contact-body .contact-section__heading {
+        margin: 0;
+        font-size: 31px;
+        line-height: 1;
+    }
+
+    body.contact-body .contact-section__heading::after {
+        margin-top: 7px;
+    }
+
+    body.contact-body .contact-layout {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        grid-template-columns:
+            minmax(320px, 0.95fr)
+            minmax(0, 1.8fr);
+        gap: 24px;
+        align-items: stretch;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    body.contact-body .contact-introduction {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+        padding: 24px 30px;
+        overflow: hidden;
+    }
+
+    body.contact-body .contact-introduction__label {
+        margin: 0 0 8px;
+        font-size: 17px;
+        line-height: 1;
+    }
+
+    body.contact-body .contact-introduction__title {
+        margin: 0 0 14px;
+        font-size: clamp(38px, 3vw, 46px);
+        line-height: 0.96;
+    }
+
+    body.contact-body .contact-introduction__description {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.55;
+    }
+
+    body.contact-body .contact-details {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        grid-template-rows:
+            repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    body.contact-body .contact-card {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        grid-template-columns:
+            44px
+            minmax(0, 1fr);
+        grid-template-rows:
+            auto
+            auto;
+        column-gap: 14px;
+        align-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 10px 20px;
+        overflow: hidden;
+    }
+
+    body.contact-body .contact-card__number {
+        grid-column: 1;
+        grid-row: 1;
+        align-self: end;
+        margin: 0 0 2px;
+        font-size: 12px;
+        line-height: 1;
+    }
+
+    body.contact-body .contact-card__icon {
+        grid-column: 1;
+        grid-row: 2;
+        width: 36px;
+        height: 36px;
+        margin: 0;
+    }
+
+    body.contact-body .contact-card__icon svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    body.contact-body .contact-card__value {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        align-self: center;
+        max-width: 100%;
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+    }
+
+    body.contact-body .site-footer {
+        display: flex;
+        width: 100%;
+        height: 44px;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        background:
+            linear-gradient(
+                90deg,
+                var(--navigation-background) 0%,
+                var(--navigation-background-light) 50%,
+                var(--navigation-background) 100%
+            );
+        overflow: hidden;
+        text-align: center;
+    }
+
+    body.contact-body .site-footer__copyright {
+        margin: 0;
+        color: #d8d8d5;
+        font-family: var(--body-font);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: 0.2px;
+        white-space: nowrap;
+    }
+}
+
+@media (min-width: 761px) and (max-height: 760px) {
+
+    body.contact-body .contact-page {
+        grid-template-rows:
+            260px
+            38px
+            50px
+            minmax(0, 1fr)
+            38px;
+    }
+
+    body.contact-body .contact-section__inner {
+        grid-template-rows:
+            38px
+            minmax(0, 1fr);
+        padding-top: 4px;
+        padding-bottom: 6px;
+    }
+
+    body.contact-body .contact-section__heading {
+        font-size: 26px;
+    }
+
+    body.contact-body .contact-layout {
+        grid-template-columns:
+            minmax(270px, 0.85fr)
+            minmax(0, 1.7fr);
+        gap: 18px;
+    }
+
+    body.contact-body .contact-introduction {
+        padding: 16px 20px;
+    }
+
+    body.contact-body .contact-introduction__label {
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    body.contact-body .contact-introduction__title {
+        margin-bottom: 8px;
+        font-size: 32px;
+    }
+
+    body.contact-body .contact-introduction__description {
+        font-size: 12px;
+        line-height: 1.42;
+    }
+
+    body.contact-body .contact-details {
+        gap: 7px;
+    }
+
+    body.contact-body .contact-card {
+        grid-template-columns:
+            36px
+            minmax(0, 1fr);
+        column-gap: 11px;
+        padding: 7px 16px;
+    }
+
+    body.contact-body .contact-card__number {
+        font-size: 11px;
+    }
+
+    body.contact-body .contact-card__icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    body.contact-body .contact-card__icon svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    body.contact-body .contact-card__value {
+        font-size: 13px;
+    }
+
+    body.contact-body .site-footer {
+        height: 38px;
+        min-height: 38px;
+    }
+
+    body.contact-body .site-footer__copyright {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 760px) {
+
+    html,
+    body.contact-body {
+        height: auto;
+        min-height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    body.contact-body .contact-page {
+        display: flex;
+        height: auto;
+        min-height: 100vh;
+        flex-direction: column;
+        overflow: visible;
+    }
+
+    body.contact-body .site-footer {
+        display: flex;
+        width: 100%;
+        min-height: 52px;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 14px 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        background:
+            linear-gradient(
+                90deg,
+                var(--navigation-background) 0%,
+                var(--navigation-background-light) 50%,
+                var(--navigation-background) 100%
+            );
+        text-align: center;
+    }
+
+    body.contact-body .site-footer__copyright {
+        margin: 0;
+        color: #d8d8d5;
+        font-size: 11px;
+        line-height: 1.4;
+    }
+}
+
+/* CONTACT FOOTER FINAL FIX END */
