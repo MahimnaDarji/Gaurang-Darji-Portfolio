@@ -317,7 +317,7 @@ a{
     height:308px;
 }
 
-.hero__portrait{
+.hero__portrait {
     width:100%;
     height:100%;
 
@@ -325,10 +325,11 @@ a{
     object-position:center bottom;
 
     filter:
-        grayscale(.28)
-        contrast(1.08)
-        brightness(1.08)
-        saturate(.82);
+        grayscale(1)
+        contrast(1.06)
+        brightness(1.04)
+        saturate(0);
+
 }
 
 
@@ -1720,14 +1721,8 @@ a{
         filter .35s ease;
 }
 
-.hero__portrait:hover{
+.hero__portrait:hover {
     transform:translateY(-3px);
-
-    filter:
-        grayscale(.15)
-        contrast(1.1)
-        brightness(1.1)
-        saturate(.9);
 }
 
 
@@ -2849,3 +2844,20 @@ button:focus-visible{
 }
 
 /* CONTACT FOOTER FINAL FIX END */
+
+
+/* REMOVE SECTION NUMBERING */
+
+.section-number,
+.card-number,
+.contact-card__number,
+.coaching-event__number,
+.timeline-number,
+.output-card__number,
+.feature-card__number,
+.profession-card__number,
+.about-card__number,
+.columns-card__number,
+.books-card__number {
+    display: none !important;
+}

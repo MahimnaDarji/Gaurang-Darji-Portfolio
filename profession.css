@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    GAURANG DARJI PORTFOLIO
    PROFESSION PAGE
    PART 1 OF 4
@@ -388,10 +388,11 @@ select {
     object-position: center bottom;
     opacity: 1;
     filter:
-        grayscale(0.28)
-        contrast(1.08)
-        brightness(1.08)
-        saturate(0.82);
+        grayscale(1)
+        contrast(1.06)
+        brightness(1.04)
+        saturate(0);
+
 }
 
 
@@ -1142,6 +1143,9 @@ select {
 
 .profession-expertise__list li {
     position: relative;
+    display: flex;
+    min-height: 46px;
+    align-items: center;
     padding: 10px 12px 10px 26px;
     background: rgba(255, 255, 255, 0.5);
     color: #2b2b2b;
@@ -1889,17 +1893,7 @@ select {
     min-width: 0;
 }
 
-.profession-introduction__title,
-.profession-introduction__description,
-.profession-strategy__title,
-.profession-point p,
-.profession-leadership__title,
-.profession-leadership__content p,
-.profession-expertise__heading,
-.profession-expertise__list li {
-    overflow-wrap: break-word;
-    word-break: normal;
-}
+
 
 
 /* ============================================================
@@ -2038,11 +2032,6 @@ select {
 
 .hero__portrait:hover {
     transform: translateY(-3px);
-    filter:
-        grayscale(0.15)
-        contrast(1.1)
-        brightness(1.1)
-        saturate(0.9);
 }
 
 
@@ -2297,3 +2286,19 @@ button:focus-visible {
    END OF PROFESSION PAGE STYLES
 ============================================================ */
 
+
+/* REMOVE SECTION NUMBERING */
+
+.section-number,
+.card-number,
+.contact-card__number,
+.coaching-event__number,
+.timeline-number,
+.output-card__number,
+.feature-card__number,
+.profession-card__number,
+.about-card__number,
+.columns-card__number,
+.books-card__number {
+    display: none !important;
+}

@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    GAURANG DARJI PORTFOLIO
    ABOUT ME PAGE
    PART 1 OF 4
@@ -355,10 +355,11 @@ select {
     object-position: center bottom;
     opacity: 1;
     filter:
-        grayscale(0.28)
-        contrast(1.08)
-        brightness(1.08)
-        saturate(0.82);
+        grayscale(1)
+        contrast(1.06)
+        brightness(1.04)
+        saturate(0);
+
 }
 
 
@@ -1661,11 +1662,6 @@ select {
 
 .hero__portrait:hover {
     transform: translateY(-3px);
-    filter:
-        grayscale(0.15)
-        contrast(1.1)
-        brightness(1.1)
-        saturate(0.9);
 }
 
 .about-single-screen__image {
@@ -1977,11 +1973,7 @@ select {
         height: 100%;
         object-fit: contain;
         object-position: center bottom;
-        filter:
-            grayscale(0.28)
-            contrast(1.08)
-            brightness(1.08)
-            saturate(0.82);
+        
     }
 
     .about-header-strip {
@@ -2279,3 +2271,20 @@ select {
 }
 
 /* ABOUT INTRO STRIP CORRECTION END */
+
+
+/* REMOVE SECTION NUMBERING */
+
+.section-number,
+.card-number,
+.contact-card__number,
+.coaching-event__number,
+.timeline-number,
+.output-card__number,
+.feature-card__number,
+.profession-card__number,
+.about-card__number,
+.columns-card__number,
+.books-card__number {
+    display: none !important;
+}

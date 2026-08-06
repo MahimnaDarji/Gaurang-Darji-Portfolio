@@ -311,10 +311,11 @@ select {
     object-position: center bottom;
     opacity: 1;
     filter:
-        grayscale(0.28)
-        contrast(1.08)
-        brightness(1.08)
-        saturate(0.82);
+        grayscale(1)
+        contrast(1.06)
+        brightness(1.04)
+        saturate(0);
+
 }
 
 .intro-strip {
@@ -1801,10 +1802,6 @@ main {
 
 .hero__portrait:hover {
     transform: translateY(-3px);
-    filter:
-        grayscale(.15)
-        contrast(1.1)
-        brightness(1.1);
 }
 
 .featured-output__image {
@@ -2370,3 +2367,20 @@ button:focus-visible {
 }
 
 /* HOME FEATURED WORK REFINEMENT END */
+
+
+/* REMOVE SECTION NUMBERING */
+
+.section-number,
+.card-number,
+.contact-card__number,
+.coaching-event__number,
+.timeline-number,
+.output-card__number,
+.feature-card__number,
+.profession-card__number,
+.about-card__number,
+.columns-card__number,
+.books-card__number {
+    display: none !important;
+}
