@@ -311,11 +311,10 @@ select {
     object-position: center bottom;
     opacity: 1;
     filter:
-        grayscale(1)
+        grayscale(0.85)
         contrast(1.06)
         brightness(1.04)
         saturate(0);
-
 }
 
 .intro-strip {
