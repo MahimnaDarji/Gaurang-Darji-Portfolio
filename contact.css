@@ -243,10 +243,28 @@ a{
 .hero__identity{
     position:absolute;
 
-    left:0;
+    left:165px;
     bottom:26px;
 
     z-index:3;
+}
+
+.hero__brand-logo {
+    position: absolute;
+    z-index: 3;
+    bottom: 37px;
+    left: 0;
+    width: 150px;
+    height: 150px;
+}
+
+.hero__brand-logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
+    object-position: center;
 }
 
 .hero__name{
@@ -366,6 +384,10 @@ a{
 
 @media (max-width:760px){
 
+    .hero__brand-logo {
+        display: none;
+    }
+
     body{
         overflow-y:auto;
     }
@@ -402,7 +424,25 @@ a{
         text-align:center;
     }
 
-    .hero__name{
+.hero__brand-logo {
+    position: absolute;
+    z-index: 3;
+    bottom: 37px;
+    left: 0;
+    width: 150px;
+    height: 150px;
+}
+
+.hero__brand-logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
+    object-position: center;
+}
+
+.hero__name{
         align-items:center;
     }
 
@@ -592,7 +632,7 @@ a{
     position:absolute;
 
     right:0;
-    left:0;
+    left:165px;
     bottom:9px;
 
     height:2px;
@@ -904,6 +944,10 @@ a{
 ============================================================ */
 
 @media (max-width:760px){
+
+    .hero__brand-logo {
+        display: none;
+    }
 
     .main-navigation{
         height:auto;
@@ -1343,6 +1387,10 @@ a{
 
 @media (max-width:760px){
 
+    .hero__brand-logo {
+        display: none;
+    }
+
     .mobile-navigation-button__icon{
         display:flex;
 
@@ -1620,6 +1668,10 @@ a{
 }
 
 @media (max-width:760px){
+
+    .hero__brand-logo {
+        display: none;
+    }
 
     .contact-page,
     .contact-page__main,
@@ -1976,6 +2028,10 @@ button:focus-visible{
 
 @media (max-width:760px){
 
+    .hero__brand-logo {
+        display: none;
+    }
+
     .contact-page,
     .contact-page__main,
     .contact-section,
@@ -2313,6 +2369,10 @@ button:focus-visible{
 
 @media (max-width: 760px) {
 
+    .hero__brand-logo {
+        display: none;
+    }
+
     html,
     body.contact-body {
         height: auto;
@@ -2382,6 +2442,10 @@ button:focus-visible{
 }
 
 @media (max-width: 760px) {
+
+    .hero__brand-logo {
+        display: none;
+    }
     .contact-card__icon {
         width: 40px;
         height: 40px;
@@ -2799,6 +2863,10 @@ button:focus-visible{
 }
 
 @media (max-width: 760px) {
+
+    .hero__brand-logo {
+        display: none;
+    }
 
     html,
     body.contact-body {

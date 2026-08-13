@@ -227,11 +227,29 @@ select {
     margin: 0 auto;
 }
 
+
 .hero__identity {
     position: absolute;
     z-index: 3;
     bottom: 26px;
+    left: 165px;
+}
+
+.hero__brand-logo {
+    position: absolute;
+    z-index: 3;
+    bottom: 22px;
     left: 0;
+    width: 145px;
+    height: 145px;
+}
+
+.hero__brand-logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
 }
 
 .hero__name {
@@ -384,11 +402,12 @@ select {
         width: min(var(--content-width), calc(100% - 56px));
     }
 
-    .hero__identity {
+    
+.hero__identity {
         bottom: 20px;
     }
 
-    .hero__first-name {
+.hero__first-name {
         font-size: 57px;
     }
 
@@ -463,7 +482,8 @@ select {
         align-items: center;
     }
 
-    .hero__identity {
+    
+.hero__identity {
         top: 34px;
         right: 20px;
         bottom: auto;
@@ -471,7 +491,7 @@ select {
         text-align: center;
     }
 
-    .hero__name {
+.hero__name {
         align-items: center;
         line-height: 0.8;
         letter-spacing: -2px;
@@ -519,11 +539,12 @@ select {
         min-height: 445px;
     }
 
-    .hero__identity {
+    
+.hero__identity {
         top: 28px;
     }
 
-    .hero__first-name {
+.hero__first-name {
         font-size: 42px;
     }
 
@@ -1391,11 +1412,12 @@ main {
         min-height: 292px;
     }
 
-    .hero__identity {
+    
+.hero__identity {
         bottom: 23px;
     }
 
-    .hero__first-name {
+.hero__first-name {
         font-size: 66px;
     }
 
@@ -1505,15 +1527,16 @@ main {
 
 @media (min-width: 761px) and (max-width: 900px) {
 
-    .hero__content {
+.hero__content {
         width: calc(100% - 40px);
     }
 
-    .hero__identity {
+    
+.hero__identity {
         left: 0;
     }
 
-    .hero__first-name {
+.hero__first-name {
         font-size: 56px;
     }
 
@@ -1582,11 +1605,12 @@ main {
         min-height: 390px;
     }
 
-    .hero__identity {
+    
+.hero__identity {
         top: 24px;
     }
 
-    .hero__first-name {
+.hero__first-name {
         font-size: 40px;
     }
 
@@ -1625,13 +1649,14 @@ main {
         min-height: 420px;
     }
 
-    .hero__identity {
+    
+.hero__identity {
         top: 24px;
         right: 12px;
         left: 12px;
     }
 
-    .hero__first-name {
+.hero__first-name {
         font-size: 38px;
     }
 
@@ -1759,6 +1784,7 @@ main {
         opacity: 1;
     }
 }
+
 
 .hero__identity {
     animation: fadeUp .7s ease both;
