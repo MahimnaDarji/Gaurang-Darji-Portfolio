@@ -2250,3 +2250,180 @@ button:focus-visible {
 .books-card__number {
     display: none !important;
 }
+
+
+/* BOOKS DESIGN1 MOBILE START */
+
+@media (max-width: 760px) {
+
+    .books-page .hero {
+        height: 500px;
+        min-height: 500px;
+    }
+
+    .books-page .hero__content {
+        position: relative !important;
+
+        display: block !important;
+
+        width: 100% !important;
+        height: 100% !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .books-page .hero__brand-logo {
+        position: absolute !important;
+
+        z-index: 5 !important;
+
+        top: 24px !important;
+        right: 0 !important;
+        bottom: auto !important;
+        left: 0 !important;
+
+        display: block !important;
+
+        width: min(74vw, 270px) !important;
+        height: auto !important;
+
+        margin: 0 auto !important;
+
+        transform: none !important;
+    }
+
+    .books-page .hero__brand-logo picture {
+        display: block !important;
+
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .books-page .hero__brand-logo img {
+        display: block !important;
+
+        width: 100% !important;
+        height: auto !important;
+        max-width: none !important;
+
+        object-fit: contain !important;
+
+        transform: none !important;
+    }
+
+    /* Design1 already contains logo + GAURANG DARJI */
+    .books-page .hero__name {
+        display: none !important;
+    }
+
+    /* Keep role separately */
+    .books-page .hero__identity {
+        position: absolute !important;
+
+        z-index: 6 !important;
+
+        top: 134px !important;
+        right: 0 !important;
+        bottom: auto !important;
+        left: 0 !important;
+
+        display: block !important;
+
+        width: 100% !important;
+
+        margin: 0 !important;
+
+        text-align: center !important;
+
+        transform: none !important;
+    }
+
+    .books-page .hero__role {
+        display: block !important;
+
+        margin: 0 !important;
+
+        color: var(--soft-white) !important;
+
+        font-size: 17px !important;
+        line-height: 1.2 !important;
+
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+    /* Keep DP separately */
+    .books-page .hero__portrait-wrapper {
+        position: absolute !important;
+
+        right: 50% !important;
+        bottom: -12px !important;
+        left: auto !important;
+
+        width: 390px !important;
+        height: 330px !important;
+
+        transform: translateX(50%) !important;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .books-page .hero {
+        height: 445px;
+        min-height: 445px;
+    }
+
+    .books-page .hero__brand-logo {
+        top: 20px !important;
+
+        width: min(76vw, 245px) !important;
+    }
+
+    .books-page .hero__identity {
+        top: 121px !important;
+    }
+
+    .books-page .hero__role {
+        font-size: 15px !important;
+    }
+
+    .books-page .hero__portrait-wrapper {
+        bottom: -12px !important;
+
+        width: 330px !important;
+        height: 290px !important;
+    }
+}
+
+
+@media (max-width: 380px) {
+
+    .books-page .hero {
+        height: 420px;
+        min-height: 420px;
+    }
+
+    .books-page .hero__brand-logo {
+        top: 18px !important;
+
+        width: min(77vw, 225px) !important;
+    }
+
+    .books-page .hero__identity {
+        top: 110px !important;
+    }
+
+    .books-page .hero__role {
+        font-size: 14px !important;
+    }
+
+    .books-page .hero__portrait-wrapper {
+        width: 300px !important;
+        height: 292px !important;
+    }
+}
+
+/* BOOKS DESIGN1 MOBILE END */
